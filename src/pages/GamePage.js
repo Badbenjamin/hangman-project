@@ -15,11 +15,8 @@ function GamePage({word}){
     }, [guesses])
 
     function handleGuess(newGuess){
-        setGuesses([...guesses, newGuess])
-        
-        
+        setGuesses([...guesses, newGuess]) 
     }
-    
     
     let matchingCharacters = characters.map((wordChar, i) => {
         if (wordChar === guesses.find(guessChar => guessChar === wordChar)) {
@@ -37,7 +34,6 @@ function GamePage({word}){
         <div>
             <Navbar/>
             <h1>GAME</h1>
-            <h2>{word}</h2>
             {guessBlankElement}
             <LetterGuessForm handleGuess={handleGuess}/>
         </div>
