@@ -1,17 +1,21 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import GamePage from '../pages/GamePage';
 import AddWordPage from '../pages/AddWordPage';
 import WordHistory from '../pages/WordHistory';
 
-
-
-
-
 function App() {
-  const [word, setWord] = useState("WORD")
+  const [word, setWord] = useState("")
+
+  useEffect(()=>{
+    fetch("http://localhost:4000/words")
+    .then(response=>response.json())
+    .then(newWords => setWord(newWords[0].word))
+  }, [])
+ 
+  console.log(word)
 
   const routes = [
     {
@@ -29,10 +33,6 @@ function App() {
   ]
 
   const router = createBrowserRouter(routes)
-
-  console.log(word)
-
-
 
   return (
     <div className="App">

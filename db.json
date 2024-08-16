@@ -2,7 +2,11 @@
     "words": [
         {
             "id": 1,
-            "word":"word"
+            "word":"GUESS"
+        },
+        {
+            "id": 2,
+            "word":"ME"
         }
     ]
 }
