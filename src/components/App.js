@@ -1,16 +1,17 @@
-import logo from '../logo.svg';
+// import logo from '../src/logo.svg';
 import '../App.css';
-import NavBar from './NavBar';
-import { Outlet } from 'react-router-dom';
+import Navbar from './Navbar';
+// import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
+      <Navbar/>
       <header className="App-header">
         APP
       </header>
-      {Outlet}
+     
+      {/* {Outlet} */}
     </div>
   );
 }

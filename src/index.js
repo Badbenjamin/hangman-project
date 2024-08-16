@@ -1,29 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './components/App';
+
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Game from './components/Game';
-import AddWordPage from './components/AddWordPage';
 
-
-const routes = [
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/game",
-        element: <Game />
-      },
-      {
-        path: "/add_word",
-        element: <AddWordPage />
-      }
-    ]
-  }
-]
+import routes from './routes';
 
 const router = createBrowserRouter(routes)
 
