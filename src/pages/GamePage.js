@@ -5,32 +5,45 @@ import LetterGuessForm from "../components/LetterGuessForm"
 
 function GamePage({word}){
     const characters = [...word]
+    
     const [wordCharacters, setWordCharacters] = useState([])
     const [guesses, setGuesses] = useState([])
-    const [reveal, setReveal] = useState(Array(characters.length).fill(true));
+    const [reveal, setReveal] = useState(Array(characters.length).fill(false));
 
-    // console.log(reveal)
+    
     
     useEffect(()=>{      
         setWordCharacters(characters)
+        
+        // setReveal([false, true, true, true, true])
     } ,[])
 
     function handleGuess(newGuess){
         setGuesses([...guesses, newGuess])
     }
 
-    function handleClick(index){
-        // console.log(index)
-        // setReveal(index)
-    }
+    // compare wordCharacters array to guesses array
+    // map matching indexes to reveal array 
 
-    // console.log(guesses)
-    // console.log(wordCharacters)
+    console.log("guesses", guesses)
+    console.log("word char", wordCharacters)
+    let matchingCharacters = wordCharacters.map((wordChar, i) => {
+        // let guessChar = guesses.map(guessChar => guessChar)
+        if (wordChar === guesses.find(guessChar => guessChar === wordChar)) {
+            return i
+            // setReveal(i)
+        }
+        // setReveal(i)
+    })
+  
+    // console.log(guesses.map(guessChar => guessChar))
+    console.log(matchingCharacters)
 
     const guessBlankElement = wordCharacters.map((char, i) => {
-        return <LetterGuessBlank reveal={reveal[i]} handleClick={() => handleClick(i)}  key={char + i} char={char} index={i}/>
+        return <LetterGuessBlank reveal={reveal[i]}  key={char + i} char={char} index={i}/>
     })
 
+    // console.log(guessBlankElement)
     return(
         <div>
             <Navbar/>
