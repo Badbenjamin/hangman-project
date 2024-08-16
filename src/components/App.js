@@ -15,7 +15,7 @@ function App() {
     .then(newWords => setWord(newWords[0].word))
   }, [])
  
-  console.log(word)
+  // console.log(word)
 
   const routes = [
     {
