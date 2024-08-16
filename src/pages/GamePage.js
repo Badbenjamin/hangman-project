@@ -4,44 +4,35 @@ import LetterGuessBlank from "../components/LetterGuessBlank"
 import LetterGuessForm from "../components/LetterGuessForm"
 
 function GamePage({word}){
+
     const characters = [...word]
     
-    const [wordCharacters, setWordCharacters] = useState([])
     const [guesses, setGuesses] = useState([])
     const [reveal, setReveal] = useState(Array(characters.length).fill(false));
 
-    
-    
-    useEffect(()=>{      
-        setWordCharacters(characters)
-        
-        // setReveal([false, true, true, true, true])
-    } ,[])
+    useEffect(()=>{
+        setReveal(matchingCharacters)
+    }, [guesses])
 
     function handleGuess(newGuess){
         setGuesses([...guesses, newGuess])
-        let matchingCharacters = wordCharacters.map((wordChar, i) => {
-            if (wordChar === guesses.find(guessChar => guessChar === wordChar)) {
-                return true
-                // setReveal()
-            } else {
-                return false
-            }
-        })
-        setReveal(matchingCharacters)
+        
+        
     }
-   
     
-  
-    // console.log(guesses.map(guessChar => guessChar))
     
-    // const foundMatch = 
+    let matchingCharacters = characters.map((wordChar, i) => {
+        if (wordChar === guesses.find(guessChar => guessChar === wordChar)) {
+            return true
+        } else {
+            return false
+        }
+    })
 
-    const guessBlankElement = wordCharacters.map((char, i) => {
+    const guessBlankElement = characters.map((char, i) => {
         return <LetterGuessBlank reveal={reveal[i]}  key={char + i} char={char} index={i}/>
     })
 
-    // console.log(guessBlankElement)
     return(
         <div>
             <Navbar/>

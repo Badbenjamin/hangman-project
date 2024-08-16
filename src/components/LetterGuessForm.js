@@ -15,6 +15,7 @@ function LetterGuessForm({handleGuess}){
     function onGuessSubmit(e){
         e.preventDefault()
         handleGuess(guessChar)
+        setGuessChar('')
     }
 
 

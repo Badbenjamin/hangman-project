@@ -20,7 +20,7 @@ function App() {
   const routes = [
     {
         path: "/",
-        element: <GamePage word={word}/>
+        element: ((word === "") ? null : <GamePage word={word}/>)
     },
     {
         path: "/add_word",
