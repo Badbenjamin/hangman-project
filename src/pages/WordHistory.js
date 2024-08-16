@@ -1,8 +1,11 @@
-
+import Navbar from "../components/Navbar"
 
 function WordHistory(){
     return(
-        <h1>Word History</h1>
+        <div>
+        <Navbar/>
+        <h1>WORD HISTORY</h1>
+    </div>
     )
 }
 

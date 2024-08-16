@@ -1,8 +1,13 @@
+import Navbar from "../components/Navbar"
 
-
-function AddWordPage(){
+function AddWordPage({word}){
     return(
-        <h1>Add Word</h1>
+        <div>
+            <Navbar/>
+            <h1>Add Word</h1>
+            <h2>{word}</h2>
+        </div>
+        
     )
 }
 

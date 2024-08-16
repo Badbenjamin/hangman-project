@@ -1,8 +1,11 @@
-
+import Navbar from "../components/Navbar"
 
 function GamePage(){
     return(
-        <h1>GAME</h1>
+        <div>
+            <Navbar/>
+            <h1>GAME</h1>
+        </div>
     )
 }
 
