@@ -11,12 +11,12 @@ function GamePage({word}){
     useEffect(()=>{     
         const characters = [...word]
         setWordCharacters(characters)
-    }, [])
+    } ,[])
 
-    console.log(wordCharacters)
+    // console.log(wordCharacters)
 
     const guessBlankElement = wordCharacters.map((char, i) => {
-        return <LetterGuessBlank key={i} char={char} />
+        return <LetterGuessBlank key={char + i} char={char} />
     })
 
     return(

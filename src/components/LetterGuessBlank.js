@@ -8,7 +8,7 @@ function LetterGuessBlank({char}){
     }
 
     return(
-        <span onClick={handleClick}>{reveal ? 0 : char}</span>
+        <span onClick={handleClick}>{reveal ? "_ " : char}</span>
     )
 }
 
