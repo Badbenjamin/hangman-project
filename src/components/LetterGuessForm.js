@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function LetterGuessForm(){
+function LetterGuessForm({handleGuess}){
     const [guessChar, setGuessChar] = useState("")
 
     function handleChange(e){
@@ -12,8 +12,15 @@ function LetterGuessForm(){
         }
     }
 
+    function onGuessSubmit(e){
+        e.preventDefault()
+        handleGuess(guessChar)
+    }
+
+
+
     return(
-        <form  >
+        <form onSubmit={onGuessSubmit} >
             <label>guess letter</label>
             <input onChange={handleChange}  id="letterInput" name="letter" value={guessChar}/>
             <button type="sumbit">Submit</button>

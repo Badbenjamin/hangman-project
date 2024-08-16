@@ -1,14 +1,15 @@
 import { useState } from "react"
 
-function LetterGuessBlank({char}){
-    const [reveal, setReveal] = useState(true)
+function LetterGuessBlank({char, handleClick, reveal, index}){
+    // const [reveal, setReveal] = useState(true)
 
-    function handleClick(){
-        setReveal(!reveal)
+    function onClick(){
+        handleClick(index)
+        // console.log(index)
     }
 
     return(
-        <span onClick={handleClick}>{reveal ? "_ " : char}</span>
+        <span index={index} onClick={onClick}>{reveal ? "_ " : char}</span>
     )
 }
 
