@@ -17,8 +17,13 @@ function GamePage({ word }) {
     }, [guesses])
 
     function handleGuess(newGuess) {
-        setGuesses([...guesses, newGuess])
-        if (!characters.find(character => character === newGuess)) {
+
+
+        if (!guesses.find(guess => guess === newGuess)) {
+            setGuesses([...guesses, newGuess])
+        }
+
+        if ((!characters.find(character => character === newGuess) && (!wrongGuesses.find(wrongGuess => newGuess)))) {
             setWrongGuesses([...wrongGuesses, newGuess])
         }
     }
@@ -42,7 +47,7 @@ function GamePage({ word }) {
             <Navbar />
             <h1>GAME</h1>
             {guessBlankElement}
-            <TurnsLeft />
+            <TurnsLeft wrongGuesses={wrongGuesses} />
             <LetterGuessForm handleGuess={handleGuess} />
         </div>
     )

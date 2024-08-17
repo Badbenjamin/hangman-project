@@ -1,8 +1,8 @@
 
 
-function TurnsLeft() {
+function TurnsLeft({ wrongGuesses }) {
     return (
-        <h1>Turns Left</h1>
+        <h1>{wrongGuesses}</h1>
     )
 }
 
