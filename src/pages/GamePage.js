@@ -10,7 +10,7 @@ function GamePage({ word }) {
 
     const [guesses, setGuesses] = useState([])
     const [reveal, setReveal] = useState(Array(characters.length).fill(false));
-    const [wrongGuesses, setWrongGUesses] = useState([])
+    const [wrongGuesses, setWrongGuesses] = useState([])
 
     useEffect(() => {
         setReveal(matchingCharacters)
@@ -18,7 +18,12 @@ function GamePage({ word }) {
 
     function handleGuess(newGuess) {
         setGuesses([...guesses, newGuess])
+        if (!characters.find(character => character === newGuess)) {
+            setWrongGuesses([...wrongGuesses, newGuess])
+        }
     }
+
+    console.log(wrongGuesses)
 
     let matchingCharacters = characters.map((wordChar) => {
         if (wordChar === guesses.find(guessChar => guessChar === wordChar)) {
@@ -27,10 +32,6 @@ function GamePage({ word }) {
             return false
         }
     })
-
-    // let wrongGuess =
-    console.log("g", guesses)
-    console.log("char", characters)
 
     const guessBlankElement = characters.map((char, i) => {
         return <LetterGuessBlank reveal={reveal[i]} key={char + i} char={char} index={i} />
