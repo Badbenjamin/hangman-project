@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import Navbar from "../components/Navbar"
 import LetterGuessBlank from "../components/LetterGuessBlank"
 import LetterGuessForm from "../components/LetterGuessForm"
+import TurnsLeft from "../components/TurnsLeft"
 
 function GamePage({ word }) {
 
@@ -9,6 +10,7 @@ function GamePage({ word }) {
 
     const [guesses, setGuesses] = useState([])
     const [reveal, setReveal] = useState(Array(characters.length).fill(false));
+    const [wrongGuesses, setWrongGUesses] = useState([])
 
     useEffect(() => {
         setReveal(matchingCharacters)
@@ -26,6 +28,10 @@ function GamePage({ word }) {
         }
     })
 
+    // let wrongGuess =
+    console.log("g", guesses)
+    console.log("char", characters)
+
     const guessBlankElement = characters.map((char, i) => {
         return <LetterGuessBlank reveal={reveal[i]} key={char + i} char={char} index={i} />
     })
@@ -35,6 +41,7 @@ function GamePage({ word }) {
             <Navbar />
             <h1>GAME</h1>
             {guessBlankElement}
+            <TurnsLeft />
             <LetterGuessForm handleGuess={handleGuess} />
         </div>
     )
