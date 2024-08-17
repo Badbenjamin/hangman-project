@@ -1,8 +1,8 @@
+import "./ComponentStyles.css"
 
+function LetterGuessBlank({ char, reveal, index }) {
 
-function LetterGuessBlank({char, handleClick, reveal, index}){
-
-    return(
+    return (
         <span className="blank" index={index} >{reveal ? char : "_ "}</span>
     )
 }
