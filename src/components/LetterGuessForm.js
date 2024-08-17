@@ -1,9 +1,9 @@
 import { useState } from "react"
 
-function LetterGuessForm({handleGuess}){
+function LetterGuessForm({ handleGuess }) {
     const [guessChar, setGuessChar] = useState("")
 
-    function handleChange(e){
+    function handleChange(e) {
         let guess = (e.target.value).toUpperCase()
         if (guess.length === 1) {
             setGuessChar(guess)
@@ -12,7 +12,7 @@ function LetterGuessForm({handleGuess}){
         }
     }
 
-    function onGuessSubmit(e){
+    function onGuessSubmit(e) {
         e.preventDefault()
         handleGuess(guessChar)
         setGuessChar('')
@@ -20,10 +20,10 @@ function LetterGuessForm({handleGuess}){
 
 
 
-    return(
+    return (
         <form onSubmit={onGuessSubmit} >
             <label>guess letter</label>
-            <input onChange={handleChange}  id="letterInput" name="letter" value={guessChar}/>
+            <input onChange={handleChange} id="letterInput" name="letter" value={guessChar} />
             <button type="sumbit">Submit</button>
         </form>
     )

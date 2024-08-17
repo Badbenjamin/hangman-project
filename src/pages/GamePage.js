@@ -13,19 +13,27 @@ function GamePage({ word }) {
     const [wrongGuesses, setWrongGuesses] = useState([])
     const [winOrLoss, setWinOrLoss] = useState([null])
 
+    console.log(winOrLoss)
+
     useEffect(() => {
         setReveal(matchingCharacters)
     }, [guesses])
 
+    useEffect(() => {
+        if (reveal.length === reveal.filter(bool => bool === true).length) {
+            setWinOrLoss(true);
+        } else if (wrongGuesses.length === 6) {
+            setWinOrLoss(false);
+        }
+    })
+
+
+
     function handleGuess(newGuess) {
 
-        if (winOrLoss === true) {
-            return
-        } else if (winOrLoss === false) {
-            return
+        if (winOrLoss === true || winOrLoss === false) {
+            return;
         }
-
-
 
         if (!guesses.find(guess => guess === newGuess)) {
             setGuesses([...guesses, newGuess])
@@ -34,14 +42,6 @@ function GamePage({ word }) {
         if ((!characters.find(character => character === newGuess) && (!wrongGuesses.find(wrongGuess => wrongGuess === newGuess)))) {
             setWrongGuesses([...wrongGuesses, newGuess])
         }
-
-        if (reveal.length === reveal.filter(bool => bool === true).length) {
-            setWinOrLoss(true);
-        } else if (wrongGuesses.length === 6) {
-            setWinOrLoss(false);
-        }
-
-
     }
 
     let matchingCharacters = characters.map((wordChar) => {
@@ -52,11 +52,6 @@ function GamePage({ word }) {
         }
     })
 
-
-
-
-
-
     const guessBlankElement = characters.map((char, i) => {
         return <LetterGuessBlank reveal={reveal[i]} key={char + i} char={char} index={i} />
     })
@@ -66,8 +61,8 @@ function GamePage({ word }) {
             <Navbar />
             <h1>GAME</h1>
             {guessBlankElement}
-            <TurnsLeft wrongGuesses={wrongGuesses} />
-            <LetterGuessForm handleGuess={handleGuess} />
+            <TurnsLeft winOrLoss={winOrLoss} wrongGuesses={wrongGuesses} />
+            {(winOrLoss[0] === null) ? (<LetterGuessForm handleGuess={handleGuess} />) : <button>Next Word</button>}
         </div>
     )
 }
