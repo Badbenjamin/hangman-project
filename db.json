@@ -2,11 +2,19 @@
     "words": [
         {
             "id": 1,
-            "word":"GUESS"
+            "word": "FUNCTION"
         },
         {
             "id": 2,
-            "word":"ME"
+            "word": "COMPUTER"
+        },
+        {
+            "id": 3,
+            "word": "TERMINAL"
+        },
+        {
+            "id": 3,
+            "word": "BOOLEAN"
         }
     ]
 }

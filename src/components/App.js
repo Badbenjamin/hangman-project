@@ -9,26 +9,24 @@ import WordHistory from '../pages/WordHistory';
 function App() {
   const [word, setWord] = useState("")
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch("http://localhost:4000/words")
-    .then(response=>response.json())
-    .then(newWords => setWord(newWords[0].word))
+      .then(response => response.json())
+      .then(newWords => setWord(newWords[3].word))
   }, [])
- 
-  // console.log(word)
 
   const routes = [
     {
-        path: "/",
-        element: ((word === "") ? null : <GamePage word={word}/>)
+      path: "/",
+      element: ((word === "") ? null : <GamePage word={word} />)
     },
     {
-        path: "/add_word",
-        element: <AddWordPage word={word}/>
-    }, 
+      path: "/add_word",
+      element: <AddWordPage word={word} />
+    },
     {
-        path:"/history",
-        element: <WordHistory word={word}/>
+      path: "/history",
+      element: <WordHistory word={word} />
     }
   ]
 

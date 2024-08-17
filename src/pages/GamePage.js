@@ -4,7 +4,7 @@ import LetterGuessBlank from "../components/LetterGuessBlank"
 import LetterGuessForm from "../components/LetterGuessForm"
 import TurnsLeft from "../components/TurnsLeft"
 
-function GamePage({ word }) {
+function GamePage({ word, handleClick }) {
 
     const characters = [...word]
 
@@ -12,8 +12,6 @@ function GamePage({ word }) {
     const [reveal, setReveal] = useState(Array(characters.length).fill(false));
     const [wrongGuesses, setWrongGuesses] = useState([])
     const [winOrLoss, setWinOrLoss] = useState([null])
-
-    console.log(winOrLoss)
 
     useEffect(() => {
         setReveal(matchingCharacters)
@@ -26,8 +24,6 @@ function GamePage({ word }) {
             setWinOrLoss(false);
         }
     })
-
-
 
     function handleGuess(newGuess) {
 
@@ -62,7 +58,7 @@ function GamePage({ word }) {
             <h1>GAME</h1>
             {guessBlankElement}
             <TurnsLeft winOrLoss={winOrLoss} wrongGuesses={wrongGuesses} />
-            {(winOrLoss[0] === null) ? (<LetterGuessForm handleGuess={handleGuess} />) : <button>Next Word</button>}
+            {(winOrLoss[0] === null) ? (<LetterGuessForm handleGuess={handleGuess} />) : <button onClick={handleClick}>Next Word</button>}
         </div>
     )
 }
