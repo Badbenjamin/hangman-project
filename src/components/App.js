@@ -11,8 +11,7 @@ function App() {
   const [words, setWords] = useState([])
   const [currentWord, setCurrentWord] = useState('')
   const [wordIndex, setWordIndex] = useState(0)
-
-  // console.log("cw 1", currentWord)
+  console.log(currentWord)
  
   useEffect(() => {
     fetch("http://localhost:4000/words")
@@ -21,24 +20,23 @@ function App() {
   }, [])
 
   useEffect(()=>{  
-    if (words[0] !== undefined) {
+    if (words[0] !== undefined && words[wordIndex] !== undefined) {
       setCurrentWord(words[wordIndex].word)
     }    
-  }, [words])
-
-  useEffect(()=>{
-    if (words[0] !== undefined) {
-    setCurrentWord(words[wordIndex].word)
-    }
-  }, [wordIndex])
+  }, [words, wordIndex])
 
   function handleNextWord(){
-    let count = wordIndex
-    count ++
-    setWordIndex(count)
-    console.log(wordIndex)
+    
+    if (currentWord !== undefined) {
+      let count = wordIndex
+      count ++
+      setWordIndex(count)
+    } else if (currentWord === words[words.length-1].word) {
+      setWordIndex(0)
+      setCurrentWord(words[0].word)
+    }
+    
   }
-  console.log(currentWord)
 
   const routes = [
     {

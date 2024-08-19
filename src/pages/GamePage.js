@@ -6,7 +6,6 @@ import TurnsLeft from "../components/TurnsLeft"
 
 function GamePage({ currentWord, handleNextWord }) {
 
-    // console.log("cw g" ,currentWord)
     const characters = [...currentWord]
   
     const [guesses, setGuesses] = useState([])
@@ -34,7 +33,7 @@ function GamePage({ currentWord, handleNextWord }) {
         setWrongGuesses([])
         setGuesses([])
     }
-    console.log(guesses)
+  
     function handleGuess(newGuess) {
 
         if (winOrLoss === true || winOrLoss === false) {
