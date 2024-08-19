@@ -57,7 +57,7 @@ function GamePage({ word, handleClick }) {
             <Navbar />
             <h1>GAME</h1>
             {guessBlankElement}
-            <TurnsLeft winOrLoss={winOrLoss} wrongGuesses={wrongGuesses} />
+            <TurnsLeft className="turns-left" winOrLoss={winOrLoss} wrongGuesses={wrongGuesses} />
             {(winOrLoss[0] === null) ? (<LetterGuessForm handleGuess={handleGuess} />) : <button onClick={handleClick}>Next Word</button>}
         </div>
     )

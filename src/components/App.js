@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:4000/words")
       .then(response => response.json())
-      .then(newWords => setWord(newWords[3].word))
+      .then(newWords => setWord(newWords[0].word))
   }, [])
 
   const routes = [
