@@ -34,6 +34,8 @@ function GamePage({ currentWord, handleNextWord }) {
         setGuesses([])
     }
   
+    console.log(wrongGuesses)
+
     function handleGuess(newGuess) {
 
         if (winOrLoss === true || winOrLoss === false) {

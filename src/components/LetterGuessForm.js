@@ -24,12 +24,14 @@ function LetterGuessForm({ handleGuess, handleClick }) {
     }
 
     return (
-        <form onSubmit={onGuessSubmit} >
-            <label>guess letter</label>
-            <input onChange={handleChange} id="letterInput" name="letter" value={guessChar} />
-            <button type="sumbit">Submit</button>
-            <button onClick={onClick} type="skip">Skip Word</button>
-        </form>
+        <div>
+          <form onSubmit={onGuessSubmit} >
+                <label>guess letter</label>
+                <input onChange={handleChange} id="letterInput" name="letter" value={guessChar} />
+                <button type="sumbit">Submit</button>
+          </form>
+                <button onClick={onClick} type="skip">Skip Word</button>
+        </div>
     )
 }
 

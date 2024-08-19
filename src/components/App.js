@@ -11,9 +11,6 @@ function App() {
   const [words, setWords] = useState([])
   const [currentWord, setCurrentWord] = useState('')
   const [wordIndex, setWordIndex] = useState(0)
-  console.log("word", currentWord)
-  console.log("index",wordIndex)
-  console.log("word array length", words.length)
  
   useEffect(() => {
     fetch("http://localhost:4000/words")
@@ -30,14 +27,11 @@ function App() {
   function handleNextWord(){
     let count = wordIndex
     if (currentWord !== undefined && wordIndex <= words.length -1) {
-      
       count ++
       setWordIndex(count)
     } else  {
-      
       setWordIndex(0)
     }
-    
   }
 
   const routes = [
