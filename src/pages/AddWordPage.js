@@ -1,3 +1,4 @@
+import AddWordForm from "../components/AddWordForm"
 import Navbar from "../components/Navbar"
 
 function AddWordPage({ word }) {
@@ -5,8 +6,7 @@ function AddWordPage({ word }) {
         <div>
             <Navbar />
             <h1>Add Word</h1>
-            <h2>{word}</h2>
-            <h2>ADD WORD FORM</h2>
+            <AddWordForm/>
             <h2>LIST OF OUR WORDS</h2>
         </div>
 

@@ -26,7 +26,7 @@ function App() {
 
   function handleNextWord(){
     let count = wordIndex
-    if (currentWord !== undefined && wordIndex <= words.length -1) {
+    if (currentWord !== undefined && wordIndex <= words.length -2) {
       count ++
       setWordIndex(count)
     } else  {
@@ -37,7 +37,7 @@ function App() {
   const routes = [
     {
       path: "/",
-      element: ((words[0] === undefined) ? null : <GamePage hint={words[wordIndex].hint}  currentWord={currentWord} handleNextWord={handleNextWord} />)
+      element: ((words[0] === undefined) ? null : <GamePage   currentWord={currentWord} handleNextWord={handleNextWord} />)
     },
     {
       path: "/add_word",
