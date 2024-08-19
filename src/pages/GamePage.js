@@ -4,12 +4,12 @@ import LetterGuessBlank from "../components/LetterGuessBlank"
 import LetterGuessForm from "../components/LetterGuessForm"
 import TurnsLeft from "../components/TurnsLeft"
 
-function GamePage({ words, handleClick }) {
+function GamePage({ currentWord }) {
 
-        console.log(words[0])
-        const word = words[0].word
-        const characters = [...word]
-    
+        // console.log(currentWord)
+        // const word = words[0].word
+        const characters = [...currentWord]
+        // const characters = ["a", "b"]
 
     const [guesses, setGuesses] = useState([])
     const [reveal, setReveal] = useState(Array(characters.length).fill(false));
@@ -28,6 +28,10 @@ function GamePage({ words, handleClick }) {
             setWinOrLoss(false);
         }
     })
+
+    function handleClick(){
+        console.log("clicked")
+    }
 
     function handleGuess(newGuess) {
 
