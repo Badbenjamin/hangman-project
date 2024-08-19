@@ -46,8 +46,21 @@ function App() {
     .then(response => response.json())
     .then(newWordData => setWords([...words, newWordData]))
   }
-  // console.log(addNewWord)
-  // console.log(words)
+  
+  function removeWord(deletedWordId){
+    console.log(deletedWordId)
+    fetch(`http://localhost:4000/words/${deletedWordId}`, {
+      method: "DELETE"
+    })
+    .then(response => {
+      if(response.ok){
+        setWords((words) => words.filter(word =>{
+          return word.id !== deletedWordId;
+        }))
+      }
+    })
+    
+  }
 
   const routes = [
     {
@@ -56,7 +69,7 @@ function App() {
     },
     {
       path: "/add_word",
-      element: ((addNewWord === undefined) ? null : <AddWordPage addNewWord={addNewWord} words={words} />)
+      element: ((addNewWord === undefined) ? null : <AddWordPage removeWord={removeWord} addNewWord={addNewWord} words={words} />)
     },
     // {
     //   path: "/history",

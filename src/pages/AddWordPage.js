@@ -1,13 +1,20 @@
 import AddWordForm from "../components/AddWordForm"
+import WordListItem from "../components/WordListItem"
 import Navbar from "../components/Navbar"
 
-function AddWordPage({ word, addNewWord }) {
+function AddWordPage({ words, addNewWord, removeWord }) {
+    console.log(words)
+    const wordListElement = words.map(word => {
+        return <WordListItem removeWord={removeWord} word={word} />
+    })
+
     return (
         <div>
             <Navbar />
             <h1>Add Word</h1>
-            <AddWordForm word={word} addNewWord={addNewWord}/>
+            <AddWordForm addNewWord={addNewWord}/>
             <h2>LIST OF OUR WORDS</h2>
+            {wordListElement}
         </div>
 
     )
