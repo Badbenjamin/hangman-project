@@ -7,26 +7,28 @@ import AddWordPage from '../pages/AddWordPage';
 import WordHistory from '../pages/WordHistory';
 
 function App() {
-  const [word, setWord] = useState("")
+  const [words, setWords] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:4000/words")
       .then(response => response.json())
-      .then(newWords => setWord(newWords[0].word))
+      .then(newWords => setWords(newWords))
   }, [])
+
+  console.log(words)
 
   const routes = [
     {
       path: "/",
-      element: ((word === "") ? null : <GamePage word={word} />)
+      element: ((words[0] === undefined) ? null : <GamePage words={words} />)
     },
     {
       path: "/add_word",
-      element: <AddWordPage word={word} />
+      element: <AddWordPage words={words} />
     },
     {
       path: "/history",
-      element: <WordHistory word={word} />
+      element: <WordHistory words={words} />
     }
   ]
 
