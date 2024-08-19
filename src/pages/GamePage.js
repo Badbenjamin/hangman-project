@@ -6,11 +6,8 @@ import TurnsLeft from "../components/TurnsLeft"
 
 function GamePage({ currentWord }) {
 
-        // console.log(currentWord)
-        // const word = words[0].word
-        const characters = [...currentWord]
-        // const characters = ["a", "b"]
-
+    const characters = [...currentWord]
+  
     const [guesses, setGuesses] = useState([])
     const [reveal, setReveal] = useState(Array(characters.length).fill(false));
     const [wrongGuesses, setWrongGuesses] = useState([])
@@ -21,12 +18,15 @@ function GamePage({ currentWord }) {
     }, [guesses])
 
     useEffect(() => {
-        
-        if (reveal.length === reveal.filter(bool => bool === true).length) {
+    
+        if ((reveal.length !== 0) && reveal.length === reveal.filter(bool => bool === true).length) {
             setWinOrLoss(true);
         } else if (wrongGuesses.length === 6) {
             setWinOrLoss(false);
         }
+        console.log("r", reveal)
+        console.log("c", characters)
+    
     })
 
     function handleClick(){

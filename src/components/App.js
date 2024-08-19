@@ -10,7 +10,6 @@ function App() {
   const [words, setWords] = useState([])
   const [currentWord, setCurrentWord] = useState('')
  
-
   useEffect(() => {
     fetch("http://localhost:4000/words")
       .then(response => response.json())
@@ -20,17 +19,10 @@ function App() {
   useEffect(()=>{
     
     if (words[0] !== undefined) {
-      setCurrentWord(words[0].word)
+      setCurrentWord(words[1].word)
     }
-    // console.log(currentWord)
     
   }, [words])
-
- 
-
-  console.log(currentWord)
-//  console.log(words[0])
-
 
   const routes = [
     {
