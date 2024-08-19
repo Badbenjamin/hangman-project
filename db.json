@@ -29,6 +29,12 @@
       "word": "TERNARY",
       "hint": "T or F",
       "difficulty": "medium"
+    },
+    {
+      "id": "3b39",
+      "word": "JAVASCRIPT",
+      "hint": "JS",
+      "difficulty": "hard"
     }
   ]
 }

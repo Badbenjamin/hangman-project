@@ -6,7 +6,7 @@ function AddWordForm({addNewWord}){
     const [formData, setFormData] = useState({
         word: "",
         hint: "",
-        difficulty: ""
+        difficulty: "easy"
     })
 
     function handleChange(e){
@@ -15,14 +15,23 @@ function AddWordForm({addNewWord}){
 
     function onSubmit(e){
         e.preventDefault()
-        addNewWord(formData)
+        const newWordForm = {
+            ...formData,
+            word: formData.word.toUpperCase()
+        }
+        addNewWord(newWordForm)
+        setFormData({
+            word: "",
+            hint: "",
+            difficulty: ""
+        })
     }
 
     return(
         <form onSubmit={onSubmit}>
                 <div>
                     <label>ADD WORD</label>
-                    <input onChange={handleChange} id="newWordInput" name="word" value={formData.name}/>
+                    <input onChange={handleChange} id="newWordInput" name="word" value={formData.word}/>
                 </div>
                 <div>
                     <label>Hint</label>
