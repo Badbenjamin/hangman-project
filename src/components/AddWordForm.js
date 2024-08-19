@@ -1,30 +1,36 @@
 import { useState } from "react"
 
-function AddWordForm(){
+function AddWordForm({addNewWord}){
+
+    console.log(addNewWord)
     const [formData, setFormData] = useState({
-        id: 1,
         word: "",
         hint: "",
         difficulty: ""
     })
 
+    function handleChange(e){
+        setFormData({...formData, [e.target.name]: e.target.value})
+    }
+
+    function onSubmit(e){
+        e.preventDefault()
+        addNewWord(formData)
+    }
+
     return(
-        <form>
+        <form onSubmit={onSubmit}>
                 <div>
                     <label>ADD WORD</label>
-                    <input id="newWordInput" name="word" />
+                    <input onChange={handleChange} id="newWordInput" name="word" value={formData.name}/>
                 </div>
                 <div>
-                    <label>Category</label>
-                    <input id="categoryInput" name="category" />
-                </div>  
-                <div>
                     <label>Hint</label>
-                    <input id="hintInput" name="hint" />
+                    <input onChange={handleChange} id="hintInput" name="hint" value={formData.hint}/>
                 </div> 
                 <div>
                     <label for="difficulty">difficulty</label>
-                    <select id="difficulty">
+                    <select onChange={handleChange} id="difficulty" name="difficulty" value={formData.difficulty}>
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
                         <option value="hard">Hard</option>

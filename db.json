@@ -1,28 +1,34 @@
 {
-    "words": [
-        {
-            "id": 1,
-            "word": "FUNCTION",
-            "hint": "A program within a program",
-            "difficulty": "hard"
-        },
-        {
-            "id": 2,
-            "word": "COMPUTER",
-            "hint": "You're using one now",
-            "difficulty": "hard"
-        },
-        {
-            "id": 3,
-            "word": "TERMINAL",
-            "hint": "Browse files with text",
-            "difficulty": "hard"
-        },
-        {
-            "id": 4,
-            "word": "BOOLEAN",
-            "hint": "T or F",
-            "difficulty": "hard"
-        }
-    ]
+  "words": [
+    {
+      "id": 1,
+      "word": "FUNCTION",
+      "hint": "A program within a program",
+      "difficulty": "hard"
+    },
+    {
+      "id": 2,
+      "word": "COMPUTER",
+      "hint": "You're using one now",
+      "difficulty": "hard"
+    },
+    {
+      "id": 3,
+      "word": "TERMINAL",
+      "hint": "Browse files with text",
+      "difficulty": "hard"
+    },
+    {
+      "id": 4,
+      "word": "BOOLEAN",
+      "hint": "T or F",
+      "difficulty": "hard"
+    },
+    {
+      "id": "8c75",
+      "word": "TERNARY",
+      "hint": "small if else",
+      "difficulty": "medium"
+    }
+  ]
 }

@@ -34,6 +34,21 @@ function App() {
     }
   }
 
+  function addNewWord(newWord){
+    console.log(newWord)
+    fetch("http://localhost:4000/words", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newWord)
+    })
+    .then(response => response.json())
+    .then(newWordData => setWords([...words, newWordData]))
+  }
+  // console.log(addNewWord)
+  // console.log(words)
+
   const routes = [
     {
       path: "/",
@@ -41,7 +56,7 @@ function App() {
     },
     {
       path: "/add_word",
-      element: ((words[0] === undefined) ? null : <AddWordPage words={words} />)
+      element: ((addNewWord === undefined) ? null : <AddWordPage addNewWord={addNewWord} words={words} />)
     },
     // {
     //   path: "/history",
