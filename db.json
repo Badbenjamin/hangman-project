@@ -2,7 +2,7 @@
     "words": [
         {
             "id": 1,
-            "word": "FUNCTION"
+            "word": "HI"
         },
         {
             "id": 2,
@@ -13,7 +13,7 @@
             "word": "TERMINAL"
         },
         {
-            "id": 3,
+            "id": 4,
             "word": "BOOLEAN"
         }
     ]

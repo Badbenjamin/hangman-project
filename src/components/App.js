@@ -7,8 +7,12 @@ import AddWordPage from '../pages/AddWordPage';
 import WordHistory from '../pages/WordHistory';
 
 function App() {
+  
   const [words, setWords] = useState([])
   const [currentWord, setCurrentWord] = useState('')
+  const [wordIndex, setWordIndex] = useState(0)
+
+  // console.log("cw 1", currentWord)
  
   useEffect(() => {
     fetch("http://localhost:4000/words")
@@ -16,18 +20,30 @@ function App() {
       .then(newWords => setWords(newWords));
   }, [])
 
-  useEffect(()=>{
-    
+  useEffect(()=>{  
     if (words[0] !== undefined) {
-      setCurrentWord(words[1].word)
-    }
-    
+      setCurrentWord(words[wordIndex].word)
+    }    
   }, [words])
+
+  useEffect(()=>{
+    if (words[0] !== undefined) {
+    setCurrentWord(words[wordIndex].word)
+    }
+  }, [wordIndex])
+
+  function handleNextWord(){
+    let count = wordIndex
+    count ++
+    setWordIndex(count)
+    console.log(wordIndex)
+  }
+  console.log(currentWord)
 
   const routes = [
     {
       path: "/",
-      element: ((words[0] === undefined) ? null : <GamePage currentWord={currentWord} />)
+      element: ((words[0] === undefined) ? null : <GamePage currentWord={currentWord} handleNextWord={handleNextWord} />)
     },
     {
       path: "/add_word",
