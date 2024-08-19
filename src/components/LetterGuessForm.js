@@ -14,13 +14,15 @@ function LetterGuessForm({ handleGuess, handleClick }) {
 
     function onGuessSubmit(e) {
         e.preventDefault()
-        handleGuess(guessChar)
-        setGuessChar('')
+        if (guessChar !== "") {
+            handleGuess(guessChar)
+            setGuessChar('')
+        } 
+        
     }
 
     function onClick(){
         handleClick()
-        // console.log("click")
     }
 
     return (

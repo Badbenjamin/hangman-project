@@ -4,9 +4,10 @@ import LetterGuessBlank from "../components/LetterGuessBlank"
 import LetterGuessForm from "../components/LetterGuessForm"
 import TurnsLeft from "../components/TurnsLeft"
 
-function GamePage({ currentWord, handleNextWord }) {
-
+function GamePage({ currentWord, handleNextWord, hint }) {
+   
     const characters = [...currentWord]
+
   
     const [guesses, setGuesses] = useState([])
     const [reveal, setReveal] = useState(Array(characters.length).fill(false));
@@ -33,8 +34,6 @@ function GamePage({ currentWord, handleNextWord }) {
         setWrongGuesses([])
         setGuesses([])
     }
-  
-    console.log(wrongGuesses)
 
     function handleGuess(newGuess) {
 
@@ -66,9 +65,10 @@ function GamePage({ currentWord, handleNextWord }) {
     return (
         <div>
             <Navbar />
-            <h1>GAME</h1>
+            <h1>GUESS THE WORD!</h1>
+            {(wrongGuesses.length >= 5) ? (<h1>{`HINT: ${hint}`}</h1>) : (<></>)}
             {guessBlankElement}
-            <TurnsLeft className="turns-left" winOrLoss={winOrLoss} wrongGuesses={wrongGuesses} />
+            <TurnsLeft className="turns-left"  winOrLoss={winOrLoss} wrongGuesses={wrongGuesses} />
             {(winOrLoss[0] === null) ? (<LetterGuessForm handleClick={handleClick} handleGuess={handleGuess} />) : <button onClick={handleClick}>Next Word</button>}
         </div>
     )

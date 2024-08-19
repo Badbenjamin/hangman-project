@@ -9,7 +9,7 @@ import WordHistory from '../pages/WordHistory';
 function App() {
   
   const [words, setWords] = useState([])
-  const [currentWord, setCurrentWord] = useState('')
+  const [currentWord, setCurrentWord] = useState("")
   const [wordIndex, setWordIndex] = useState(0)
  
   useEffect(() => {
@@ -37,16 +37,16 @@ function App() {
   const routes = [
     {
       path: "/",
-      element: ((words[0] === undefined) ? null : <GamePage currentWord={currentWord} handleNextWord={handleNextWord} />)
+      element: ((words[0] === undefined) ? null : <GamePage hint={words[wordIndex].hint}  currentWord={currentWord} handleNextWord={handleNextWord} />)
     },
     {
       path: "/add_word",
       element: ((words[0] === undefined) ? null : <AddWordPage words={words} />)
     },
-    {
-      path: "/history",
-      element: ((words[0] === undefined) ? null : <WordHistory words={words} />)
-    }
+    // {
+    //   path: "/history",
+    //   element: ((words[0] === undefined) ? null : <WordHistory words={words} />)
+    // }
   ]
 
   const router = createBrowserRouter(routes)
