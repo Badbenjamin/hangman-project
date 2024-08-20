@@ -1,13 +1,12 @@
+import './ComponentStyles.css'
 
-
-function TurnsLeft({ wrongGuesses, winOrLoss, hint }) {
+function TurnsLeft({ wrongGuesses, winOrLoss}) {
 
 
     return (
         <div className="turns_left">
             <div>{`GUESSES LEFT: ${6 - wrongGuesses.length}`}</div>
-            <div>{`GUESSED LETTERS: ${wrongGuesses}`}</div>
-            {/* {(wrongGuesses.length = 5) ? <>HINT</> : <></>} */}
+            <div id="wrong">{wrongGuesses}</div>
             {(winOrLoss === true) ? <>WINNER</> : (winOrLoss === false) ? <>LOSER</> : <></>}
         </div>
     )

@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar"
 import LetterGuessBlank from "../components/LetterGuessBlank"
 import LetterGuessForm from "../components/LetterGuessForm"
 import TurnsLeft from "../components/TurnsLeft"
+import '../components/ComponentStyles.css'
 
 function GamePage({ currentWord, handleNextWord, hint }) {
     console.log(hint)
@@ -61,7 +62,7 @@ function GamePage({ currentWord, handleNextWord, hint }) {
 
 
     const guessBlankElement = characters.map((char, i) => {
-        return <LetterGuessBlank reveal={reveal[i]} key={char + i} char={char} index={i} />
+        return <LetterGuessBlank className="guess" reveal={reveal[i]} key={char + i} char={char} index={i} />
     })
 
     return (

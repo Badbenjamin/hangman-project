@@ -2,6 +2,10 @@
     font-size: 100px;
 }
 
-.turns-left {
-    font-size: 100px;
+.turns_left {
+    font-size: 30px;
+}
+
+#wrong{
+    font-size: 45px;
 }
