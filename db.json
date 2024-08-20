@@ -41,6 +41,12 @@
       "word": "TERNARY",
       "hint": "Short if else",
       "difficulty": "medium"
+    },
+    {
+      "id": "9162",
+      "word": "EVENT",
+      "hint": "onClick",
+      "difficulty": "medium"
     }
   ]
 }

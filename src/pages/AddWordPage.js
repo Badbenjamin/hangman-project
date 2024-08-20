@@ -1,11 +1,20 @@
 import AddWordForm from "../components/AddWordForm"
-import WordListItem from "../components/WordListItem"
+import WordList from "../components/WordList"
 import Navbar from "../components/Navbar"
 
+
+import { useState } from "react"
+
 function AddWordPage({ words, addNewWord, removeWord }) {
- 
-    const wordListElement = words.map(word => {
-        return <WordListItem key={word.id} removeWord={removeWord} word={word} />
+    const [searchText, setSearchtext] = useState('')
+
+    function onChange(e){
+        setSearchtext(e.target.value)
+    }
+
+    console.log(searchText)
+    const filteredWords = words.filter(word => {
+        return word.word.includes(searchText.toUpperCase())
     })
 
     return (
@@ -14,7 +23,18 @@ function AddWordPage({ words, addNewWord, removeWord }) {
             <h1>ADD WORD</h1>
             <AddWordForm addNewWord={addNewWord}/>
             <h2>WORDS</h2>
-            {wordListElement}
+            <div className="searchbar">
+                <label htmlFor="search"></label>
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="SEARCH WORDS"
+                    onChange={onChange}
+                     value={searchText}
+                />
+            </div>
+             <WordList words={filteredWords} removeWord={removeWord} />
+           
         </div>
 
     )

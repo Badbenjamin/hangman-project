@@ -94,16 +94,16 @@ function App() {
     },
     {
       path: "/add_word",
-      element: ((addNewWord === undefined) ? null : <AddWordPage removeWord={removeWord} addNewWord={addNewWord} words={words} />),
+      element: <AddWordPage removeWord={removeWord} addNewWord={addNewWord} words={words} />,
       errorElement: <ErrorPage/>
     },
     {
       path: "/history",
-      element: ((words[0] === undefined) ? null : <WordHistory words={words} />)
+      element: <WordHistory/>
     },
     {
       path: "/words/:id",
-      element: ((words[0] === undefined) ? null : <EditWordPage editWord={editWord}/>)
+      element: ((words[0] === undefined) ? null : <EditWordPage  editWord={editWord}/>)
     }
   ]
 
