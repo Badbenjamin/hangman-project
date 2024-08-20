@@ -1,7 +1,14 @@
+import { Link } from "react-router-dom"
+
 function WordListItem({word, removeWord}){
 
-    function onClick(){
+
+    function onDelete(){
         removeWord(word.id)
+    }
+
+    function onEdit(){
+        console.log(word.id)
     }
 
     return(
@@ -9,7 +16,7 @@ function WordListItem({word, removeWord}){
             <h2>{word.word}</h2>
             <div>HINT: {word.hint}</div>
             <div>DIFFICULTY: {word.difficulty}</div>
-            <button onClick={onClick}>REMOVE</button>
+            <button onClick={onDelete}>REMOVE</button><button><Link to={`/words/${word.id}`}>EDIT</Link></button>
         </>
     )
 }

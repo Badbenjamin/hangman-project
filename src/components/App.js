@@ -6,6 +6,7 @@ import GamePage from '../pages/GamePage';
 import AddWordPage from '../pages/AddWordPage';
 import WordHistory from '../pages/WordHistory';
 import ErrorPage from '../pages/ErrorPage';
+import EditWordPage from '../pages/EditWordPage';
 
 
 function App() {
@@ -64,6 +65,10 @@ function App() {
     
   }
 
+  function editWord(id){
+    console.log(id)
+  }
+
   const routes = [
     {
       path: "/",
@@ -78,6 +83,10 @@ function App() {
     {
       path: "/history",
       element: ((words[0] === undefined) ? null : <WordHistory words={words} />)
+    },
+    {
+      path: "/words/:id",
+      element: ((words[0] === undefined) ? null : <EditWordPage/>)
     }
   ]
 

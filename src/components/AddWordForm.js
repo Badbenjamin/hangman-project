@@ -2,7 +2,6 @@ import { useState } from "react"
 
 function AddWordForm({addNewWord}){
 
-    console.log(addNewWord)
     const [formData, setFormData] = useState({
         word: "",
         hint: "",
@@ -38,7 +37,7 @@ function AddWordForm({addNewWord}){
                     <input onChange={handleChange} id="hintInput" name="hint" value={formData.hint}/>
                 </div> 
                 <div>
-                    <label for="difficulty">difficulty</label>
+                    <label form="difficulty">difficulty</label>
                     <select onChange={handleChange} id="difficulty" name="difficulty" value={formData.difficulty}>
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>

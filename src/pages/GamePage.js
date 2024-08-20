@@ -6,10 +6,8 @@ import TurnsLeft from "../components/TurnsLeft"
 
 
 function GamePage({ currentWord, handleNextWord, hint }) {
-    console.log(hint)
    
     const characters = [...currentWord]
-    console.log(currentWord)
   
     const [guesses, setGuesses] = useState([])
     const [reveal, setReveal] = useState(Array(characters.length).fill(false));
