@@ -25,12 +25,6 @@
       "difficulty": "hard"
     },
     {
-      "id": "b217",
-      "word": "TERNARY",
-      "hint": "T or F",
-      "difficulty": "medium"
-    },
-    {
       "id": "3b39",
       "word": "JAVASCRIPT",
       "hint": "Frontend language",
@@ -40,6 +34,12 @@
       "id": "4bf8",
       "word": "BYTE",
       "hint": "memory",
+      "difficulty": "medium"
+    },
+    {
+      "id": "9ee5",
+      "word": "TERNARY",
+      "hint": "Short if else",
       "difficulty": "medium"
     }
   ]

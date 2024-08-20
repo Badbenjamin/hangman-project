@@ -6,6 +6,7 @@ import GamePage from '../pages/GamePage';
 import AddWordPage from '../pages/AddWordPage';
 import WordHistory from '../pages/WordHistory';
 
+
 function App() {
   
   const [words, setWords] = useState([])

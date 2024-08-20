@@ -2,6 +2,16 @@
     font-size: 100px;
 }
 
+.letter_green{
+    font-size: 100px;
+    color: green;
+}
+
+.letter_red{
+    font-size: 100px;
+    color: red;
+}
+
 .turns_left {
     font-size: 30px;
 }
