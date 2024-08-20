@@ -33,8 +33,14 @@
     {
       "id": "3b39",
       "word": "JAVASCRIPT",
-      "hint": "JS",
+      "hint": "Frontend language",
       "difficulty": "hard"
+    },
+    {
+      "id": "4bf8",
+      "word": "BYTE",
+      "hint": "memory",
+      "difficulty": "medium"
     }
   ]
 }

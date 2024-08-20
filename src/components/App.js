@@ -65,7 +65,7 @@ function App() {
   const routes = [
     {
       path: "/",
-      element: ((words[0] === undefined) ? null : <GamePage   currentWord={currentWord} handleNextWord={handleNextWord} />)
+      element: ((words[0] === undefined) ? null : <GamePage hint={words[wordIndex].hint}   currentWord={currentWord} handleNextWord={handleNextWord} />)
     },
     {
       path: "/add_word",

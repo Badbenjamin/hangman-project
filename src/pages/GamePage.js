@@ -5,6 +5,7 @@ import LetterGuessForm from "../components/LetterGuessForm"
 import TurnsLeft from "../components/TurnsLeft"
 
 function GamePage({ currentWord, handleNextWord, hint }) {
+    console.log(hint)
    
     const characters = [...currentWord]
     console.log(currentWord)
@@ -58,6 +59,7 @@ function GamePage({ currentWord, handleNextWord, hint }) {
         }
     })
 
+
     const guessBlankElement = characters.map((char, i) => {
         return <LetterGuessBlank reveal={reveal[i]} key={char + i} char={char} index={i} />
     })
@@ -66,7 +68,7 @@ function GamePage({ currentWord, handleNextWord, hint }) {
         <div>
             <Navbar />
             <h1>GUESS THE WORD!</h1>
-            {/* {(wrongGuesses.length >= 5) ? (<h1>{`HINT: ${hint}`}</h1>) : (<></>)} */}
+            {(wrongGuesses.length >= 5) ? (<h1>{`HINT: ${hint}`}</h1>) : (<></>)}
             {guessBlankElement}
             <TurnsLeft className="turns-left"  winOrLoss={winOrLoss} wrongGuesses={wrongGuesses} />
             {(winOrLoss[0] === null) ? (<LetterGuessForm handleClick={handleClick} handleGuess={handleGuess} />) : <button onClick={handleClick}>Next Word</button>}
