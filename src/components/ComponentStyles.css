@@ -18,4 +18,15 @@
 
 #wrong{
     font-size: 45px;
+    color: red;
+}
+
+.guess_green{
+    font-size: 30px;
+    color: green;
+}
+
+.guess_red{
+    font-size: 30px;
+    color: red;
 }
