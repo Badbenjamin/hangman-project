@@ -1,28 +1,28 @@
 {
   "words": [
     {
-      "id": 1,
+      "id": "1",
       "word": "FUNCTION",
       "hint": "A program within a program",
       "difficulty": "hard"
     },
     {
-      "id": 2,
+      "id": "2",
       "word": "COMPUTER",
       "hint": "You're using one now",
       "difficulty": "hard"
     },
     {
-      "id": 3,
+      "id": "3",
       "word": "TERMINAL",
       "hint": "Browse files with text",
       "difficulty": "hard"
     },
     {
-      "id": 4,
+      "id": "4",
       "word": "BOOLEAN",
       "hint": "T or F",
-      "difficulty": "hard"
+      "difficulty": "medium"
     },
     {
       "id": "3b39",

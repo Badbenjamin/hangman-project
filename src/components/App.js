@@ -65,8 +65,25 @@ function App() {
     
   }
 
-  function editWord(id){
-    console.log(id)
+  function editWord(updatedWord, id){
+    // console.log(updatedWord)
+    // console.log(id)
+    fetch(`http://localhost:4000/words/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept" : "application/json"
+      },
+      body: JSON.stringify(updatedWord)
+    })
+    .then(r => r.json())
+    .then(updatedWordData => setWords(words => words.map(word => {
+      if (updatedWordData.id === word.id) {
+        return updatedWordData
+      } else {
+        return word
+      }
+    })))
   }
 
   const routes = [
@@ -86,7 +103,7 @@ function App() {
     },
     {
       path: "/words/:id",
-      element: ((words[0] === undefined) ? null : <EditWordPage/>)
+      element: ((words[0] === undefined) ? null : <EditWordPage editWord={editWord}/>)
     }
   ]
 

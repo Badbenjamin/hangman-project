@@ -1,65 +1,76 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
+import Navbar from "../components/Navbar"
 
-function EditWordPage(){
+function EditWordPage({editWord}){
 
     const navigate = useNavigate()
     const {id} = useParams()
 
     const [word, setWord] =useState({
-        id: 0,
         word: "",
         hint: "",
         difficulty: ""
     })
     const [formData, setFormData] = useState({
-        id: 1,
-        word: "",
-        hint: "",
-        difficulty: ""
+        word: word.word,
+        hint: word.hint,
+        difficulty: word.difficulty
     }) 
 
     useEffect(()=>{
         fetch(`http://localhost:4000/words/${id}`)
         .then(r=>r.json())
-        .then(wordData => setWord(wordData))
-
+        .then(wordData => setWord(wordData));
     }, [])
 
-    console.log(word)
+    useEffect(()=>{
+        setFormData(word)
+        
+    }, [word])
+
+    console.log(formData)
     // console.log(word.word)
 
-    function handleChange(){
-
+    function handleChange(e){
+        setFormData({...formData, [e.target.name]: e.target.value})
     }
 
-    function onSubmit(){
+    function onSubmit(e){
+        e.preventDefault()
+        const editedWordForm = {
+            ...formData,
+            word: formData.word.toUpperCase()
+        }
+        editWord(editedWordForm, word.id)
+
 
     }
 
 
     return(
     <div>
-        <h1>{word.word}</h1>
-        
+        <Navbar/>
+        <h1>{formData.word}</h1>
+       
         <form onSubmit={onSubmit}>
             <div>
                 <label>EDIT WORD</label>
                 <input onChange={handleChange} id="newWordInput" name="word" value={formData.word}/>
             </div>
             <div>
-                <label>Hint</label>
+                <label>EDIT HINT</label>
                 <input onChange={handleChange} id="hintInput" name="hint" value={formData.hint}/>
             </div> 
             <div>
-                <label form="difficulty">difficulty</label>
+                <label form="difficulty">EDIT DIFFICULTY</label>
                 <select onChange={handleChange} id="difficulty" name="difficulty" value={formData.difficulty}>
-                    <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
+                    <option value="easy">EASY</option>
+                    <option value="medium">MEDIUM</option>
+                    <option value="hard">HARD</option>
                 </select>
             </div>
-            <button type="sumbit">Submit</button>
+            <button type="sumbit">SUMBIT</button>
         </form>
     </div>
     )
