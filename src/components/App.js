@@ -14,18 +14,43 @@ function App() {
   const [words, setWords] = useState([])
   const [currentWord, setCurrentWord] = useState("")
   const [wordIndex, setWordIndex] = useState(0)
- 
+  const [shuffleedWords, setShuffledWords] = useState([])
+  // const shuffleWords = [...words]
+  console.log(currentWord)
+
+  
+  // console.log("words", words)
+  // console.log("sw", shuffleWords)
+
   useEffect(() => {
     fetch("http://localhost:4000/words")
       .then(response => response.json())
       .then(newWords => setWords(newWords));
   }, [])
 
+  useEffect(()=>{
+    function shuffleArray(array){
+      let i = array.length, j, temp;
+      while (--i > 0) {
+        j = Math.floor(Math.random() *  (i + 1));
+        temp = array[j];
+        array[j] = array[i];
+        array[i] = temp;
+      }
+      return array
+    }
+    // shuffleArray(...words)
+    setShuffledWords(shuffleArray([...words]))
+  }, [words])
+
+  console.log(shuffleedWords)
+  console.log(words)
+
   useEffect(()=>{  
     if (words[0] !== undefined && words[wordIndex] !== undefined) {
       setCurrentWord(words[wordIndex].word)
     } 
-  }, [words, wordIndex])
+  }, [wordIndex])
 
   function handleNextWord(){
     let count = wordIndex
