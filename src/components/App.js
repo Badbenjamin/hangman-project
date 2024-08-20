@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import GamePage from '../pages/GamePage';
 import AddWordPage from '../pages/AddWordPage';
 import WordHistory from '../pages/WordHistory';
+import ErrorPage from '../pages/ErrorPage';
 
 
 function App() {
@@ -66,16 +67,18 @@ function App() {
   const routes = [
     {
       path: "/",
-      element: ((words[0] === undefined) ? null : <GamePage hint={words[wordIndex].hint} currentWord={currentWord} handleNextWord={handleNextWord} />)
+      element: ((words[0] === undefined) ? null : <GamePage hint={words[wordIndex].hint} currentWord={currentWord} handleNextWord={handleNextWord} />),
+      errorElement: <ErrorPage/>
     },
     {
       path: "/add_word",
-      element: ((addNewWord === undefined) ? null : <AddWordPage removeWord={removeWord} addNewWord={addNewWord} words={words} />)
+      element: ((addNewWord === undefined) ? null : <AddWordPage removeWord={removeWord} addNewWord={addNewWord} words={words} />),
+      errorElement: <ErrorPage/>
     },
-    // {
-    //   path: "/history",
-    //   element: ((words[0] === undefined) ? null : <WordHistory words={words} />)
-    // }
+    {
+      path: "/history",
+      element: ((words[0] === undefined) ? null : <WordHistory words={words} />)
+    }
   ]
 
   const router = createBrowserRouter(routes)
