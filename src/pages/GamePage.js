@@ -4,6 +4,7 @@ import LetterGuessBlank from "../components/LetterGuessBlank"
 import LetterGuessForm from "../components/LetterGuessForm"
 import TurnsLeft from "../components/TurnsLeft"
 import DifficultySetting from "../components/DifficultySetting"
+import ScoreCard from "../components/ScoreCard"
 
 
 function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange }) {
@@ -15,6 +16,8 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange })
     const [wrongGuesses, setWrongGuesses] = useState([])
     const [winOrLoss, setWinOrLoss] = useState([null])
 
+    console.log(currentWord)
+
     useEffect(() => {
         setReveal(matchingCharacters)
     }, [guesses])
@@ -22,23 +25,24 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange })
     useEffect(() => {
     
         if ((reveal.length !== 0) && reveal.length === reveal.filter(bool => bool === true).length) {
-            setWinOrLoss(true);
+            setWinOrLoss([...winOrLoss, true]);
         } else if (wrongGuesses.length === 6) {
-            setWinOrLoss(false);
+            setWinOrLoss([...winOrLoss, false]);
         }
-    })
+    }, [reveal])
 
     function handleClick(){
         handleNextWord()
         setReveal(Array(characters.length).fill(false))
-        setWinOrLoss([null])
+        setWinOrLoss([...winOrLoss, null])
         setWrongGuesses([])
         setGuesses([])
     }
 
     function handleGuess(newGuess) {
 
-        if (winOrLoss === true || winOrLoss === false) {
+        if (winOrLoss.length - 1 === true || winOrLoss.length -1 === false) {
+
             return;
         }
 
@@ -61,7 +65,7 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange })
 
 
     const guessBlankElement = characters.map((char, i) => {
-        return <LetterGuessBlank className="guess" winOrLoss={winOrLoss} reveal={reveal[i]} key={char + i} char={char} index={i} />
+        return <LetterGuessBlank className="guess" winOrLoss={winOrLoss.length -2} reveal={reveal[i]} key={char + i} char={char} index={i} />
     })
 
     return (
@@ -71,8 +75,9 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange })
             <DifficultySetting onDifficultyChange={handleDifficultyChange} />
             {(wrongGuesses.length >= 5) ? (<h1>{`HINT: ${hint}`}</h1>) : (<></>)}
             {guessBlankElement}
-            <TurnsLeft className="turns-left"  winOrLoss={winOrLoss} wrongGuesses={wrongGuesses} />
-            {(winOrLoss[0] === null) ? (<LetterGuessForm handleClick={handleClick} handleGuess={handleGuess} />) : <button onClick={handleClick}>Next Word</button>}
+            <TurnsLeft className="turns-left"  winOrLoss={winOrLoss.length -1} wrongGuesses={wrongGuesses} />
+            {(winOrLoss[winOrLoss.length-1] === null) ? (<LetterGuessForm handleClick={handleClick} handleGuess={handleGuess} />) : <button onClick={handleClick}>Next Word</button>}
+            <ScoreCard winOrLoss={winOrLoss}/>
         </div>
     )
 }

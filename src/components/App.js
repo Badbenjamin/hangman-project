@@ -15,8 +15,6 @@ function App() {
   const [currentWord, setCurrentWord] = useState("")
   const [wordIndex, setWordIndex] = useState(0)
   const [difficulty, setDifficultly] = useState("")
-  console.log("cw", currentWord)
-  console.log("d", difficulty)
 
   useEffect(() => {
     fetch("http://localhost:4000/words")
@@ -56,7 +54,6 @@ function App() {
       } else if (wordDifficulty[wordIndex] === undefined) {
         handleNextWord()
       }
-      console.log("wd", wordDifficulty)
     }
   }, [words, wordIndex, difficulty])
 
@@ -71,7 +68,6 @@ function App() {
   }
 
   function addNewWord(newWord) {
-    console.log(newWord)
     fetch("http://localhost:4000/words", {
       method: "POST",
       headers: {
@@ -84,7 +80,6 @@ function App() {
   }
 
   function removeWord(deletedWordId) {
-    console.log(deletedWordId)
     fetch(`http://localhost:4000/words/${deletedWordId}`, {
       method: "DELETE"
     })

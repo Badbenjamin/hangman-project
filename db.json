@@ -137,6 +137,12 @@
       "word": "STRING",
       "hint": "\"\"",
       "difficulty": "medium"
+    },
+    {
+      "id": "f82e",
+      "word": "POST",
+      "hint": "fetch method",
+      "difficulty": "easy"
     }
   ]
 }

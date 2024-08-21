@@ -10,7 +10,7 @@ function DifficultySetting({onDifficultyChange}){
     }
     return(
         <div>
-            <label form="difficultySetting">DIFFICULTY SETTING</label>
+            <label form="difficultySetting">DIFFICULTY</label>
                 <select onChange={onChange} id="difficultySetting" name="difficulty">
                     <option value="mix">MIX</option>
                     <option value="easy">EASY</option>
