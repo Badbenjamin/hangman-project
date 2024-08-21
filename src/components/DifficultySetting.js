@@ -8,6 +8,7 @@ function DifficultySetting({onDifficultyChange}){
         console.log(event.target.value)
         onDifficultyChange(event.target.value)
     }
+
     return(
         <div>
             <label form="difficultySetting">DIFFICULTY</label>

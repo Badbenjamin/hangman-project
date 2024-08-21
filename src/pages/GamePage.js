@@ -7,7 +7,7 @@ import DifficultySetting from "../components/DifficultySetting"
 import ScoreCard from "../components/ScoreCard"
 
 
-function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange }) {
+function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, difficulty }) {
    
     const characters = [...currentWord]
   
@@ -15,8 +15,10 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange })
     const [reveal, setReveal] = useState(Array(characters.length).fill(false));
     const [wrongGuesses, setWrongGuesses] = useState([])
     const [winOrLoss, setWinOrLoss] = useState([null])
+    const [gameOver, setGameOver] = useState(false)
 
     console.log(currentWord)
+    console.log(difficulty)
 
     useEffect(() => {
         setReveal(matchingCharacters)
@@ -72,7 +74,7 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange })
         <div>
             <Navbar />
             <h1>GUESS THE WORD!</h1>
-            <DifficultySetting onDifficultyChange={handleDifficultyChange} />
+            {(winOrLoss.length === 1 && guesses.length === 0) ? <DifficultySetting guesses={guesses} onDifficultyChange={handleDifficultyChange}/> : <div>DIFFICULTY: {difficulty.toUpperCase()}</div>}
             {(wrongGuesses.length >= 5) ? (<h1>{`HINT: ${hint}`}</h1>) : (<></>)}
             {guessBlankElement}
             <TurnsLeft className="turns-left"  winOrLoss={winOrLoss.length -1} wrongGuesses={wrongGuesses} />

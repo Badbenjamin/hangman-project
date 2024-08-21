@@ -14,7 +14,8 @@ function App() {
   const [words, setWords] = useState([])
   const [currentWord, setCurrentWord] = useState("")
   const [wordIndex, setWordIndex] = useState(0)
-  const [difficulty, setDifficultly] = useState("")
+  const [difficulty, setDifficultly] = useState("mix")
+  const [gameOver, setGameOver] = useState(false)
 
   useEffect(() => {
     fetch("http://localhost:4000/words")
@@ -33,7 +34,6 @@ function App() {
     }
     return array
   }
-
   
   useEffect(() => {
     if ((words[0] !== undefined && words[wordIndex] !== undefined)) {
@@ -52,9 +52,10 @@ function App() {
       if (wordDifficulty[wordIndex] !== undefined) {
         setCurrentWord(wordDifficulty[wordIndex].word)
       } else if (wordDifficulty[wordIndex] === undefined) {
-        handleNextWord()
-      }
-    }
+        // handleNextWord()
+        alert("end of list")
+      } 
+    } 
   }, [words, wordIndex, difficulty])
 
   function handleNextWord() {
@@ -121,7 +122,7 @@ function App() {
   const routes = [
     {
       path: "/",
-      element: ((words[0] === undefined) ? null : <GamePage hint={words[wordIndex].hint} currentWord={currentWord} handleDifficultyChange={handleDifficultyChange} handleNextWord={handleNextWord} />),
+      element: ((words[0] === undefined) ? null : <GamePage hint={words[wordIndex].hint} currentWord={currentWord} difficulty={difficulty} handleDifficultyChange={handleDifficultyChange} handleNextWord={handleNextWord} />),
       errorElement: <ErrorPage />
     },
     {
