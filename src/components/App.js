@@ -14,7 +14,9 @@ function App() {
   const [words, setWords] = useState([])
   const [currentWord, setCurrentWord] = useState("")
   const [wordIndex, setWordIndex] = useState(0)
-  console.log(currentWord)
+  const [difficulty, setDifficultly] = useState("")
+  console.log("cw", currentWord)
+  console.log("d", difficulty)
 
   useEffect(() => {
     fetch("http://localhost:4000/words")
@@ -34,12 +36,29 @@ function App() {
     return array
   }
 
-
+  
   useEffect(() => {
-    if (words[0] !== undefined && words[wordIndex] !== undefined) {
-      setCurrentWord(words[wordIndex].word)
+    if ((words[0] !== undefined && words[wordIndex] !== undefined)) {
+      let wordDifficulty = [...words]
+      
+      if (difficulty === "easy") {
+        wordDifficulty = wordDifficulty.filter((word) => word.difficulty === "easy")
+      } else if (difficulty === "medium") {
+        wordDifficulty = wordDifficulty.filter((word) => word.difficulty === "medium")
+      } else if (difficulty === "hard") {
+        wordDifficulty = wordDifficulty.filter((word) => word.difficulty === "hard")
+      } else {
+        wordDifficulty = wordDifficulty
+      }  
+
+      if (wordDifficulty[wordIndex] !== undefined) {
+        setCurrentWord(wordDifficulty[wordIndex].word)
+      } else if (wordDifficulty[wordIndex] === undefined) {
+        handleNextWord()
+      }
+      console.log("wd", wordDifficulty)
     }
-  }, [words, wordIndex])
+  }, [words, wordIndex, difficulty])
 
   function handleNextWord() {
     let count = wordIndex
@@ -76,8 +95,12 @@ function App() {
           }))
         }
       })
-
   }
+
+  function handleDifficultyChange(currentDifficulty){
+    console.log(currentDifficulty)
+    setDifficultly(currentDifficulty)
+  } 
 
   function editWord(updatedWord, id) {
     // console.log(updatedWord)
@@ -103,7 +126,7 @@ function App() {
   const routes = [
     {
       path: "/",
-      element: ((words[0] === undefined) ? null : <GamePage hint={words[wordIndex].hint} currentWord={currentWord} handleNextWord={handleNextWord} />),
+      element: ((words[0] === undefined) ? null : <GamePage hint={words[wordIndex].hint} currentWord={currentWord} handleDifficultyChange={handleDifficultyChange} handleNextWord={handleNextWord} />),
       errorElement: <ErrorPage />
     },
     {

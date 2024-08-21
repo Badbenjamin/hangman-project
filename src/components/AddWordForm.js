@@ -22,7 +22,7 @@ function AddWordForm({addNewWord}){
         setFormData({
             word: "",
             hint: "",
-            difficulty: ""
+            difficulty: "easy"
         })
     }
 

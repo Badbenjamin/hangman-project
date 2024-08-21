@@ -3,9 +3,10 @@ import Navbar from "../components/Navbar"
 import LetterGuessBlank from "../components/LetterGuessBlank"
 import LetterGuessForm from "../components/LetterGuessForm"
 import TurnsLeft from "../components/TurnsLeft"
+import DifficultySetting from "../components/DifficultySetting"
 
 
-function GamePage({ currentWord, handleNextWord, hint }) {
+function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange }) {
    
     const characters = [...currentWord]
   
@@ -67,6 +68,7 @@ function GamePage({ currentWord, handleNextWord, hint }) {
         <div>
             <Navbar />
             <h1>GUESS THE WORD!</h1>
+            <DifficultySetting onDifficultyChange={handleDifficultyChange} />
             {(wrongGuesses.length >= 5) ? (<h1>{`HINT: ${hint}`}</h1>) : (<></>)}
             {guessBlankElement}
             <TurnsLeft className="turns-left"  winOrLoss={winOrLoss} wrongGuesses={wrongGuesses} />

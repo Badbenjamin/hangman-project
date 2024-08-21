@@ -52,7 +52,91 @@
       "id": "7e5a",
       "word": "BINARY",
       "hint": "Ones and zeroes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "9151",
+      "word": "IF",
+      "hint": "else",
       "difficulty": "easy"
+    },
+    {
+      "id": "c5f3",
+      "word": "ARRAY",
+      "hint": "index",
+      "difficulty": "medium"
+    },
+    {
+      "id": "8161",
+      "word": "OBJECT",
+      "hint": "keys and values",
+      "difficulty": "medium"
+    },
+    {
+      "id": "c6f5",
+      "word": "BUG",
+      "hint": "error",
+      "difficulty": "easy"
+    },
+    {
+      "id": "02ae",
+      "word": "CODE",
+      "hint": "VS",
+      "difficulty": "easy"
+    },
+    {
+      "id": "77ce",
+      "word": "SUM",
+      "hint": "add",
+      "difficulty": "easy"
+    },
+    {
+      "id": "404c",
+      "word": "TEST",
+      "hint": "pass or fail",
+      "difficulty": "easy"
+    },
+    {
+      "id": "52bc",
+      "word": "PYTHON",
+      "hint": "backend language",
+      "difficulty": "hard"
+    },
+    {
+      "id": "efa6",
+      "word": "SEMICOLON",
+      "hint": "end of statement",
+      "difficulty": "hard"
+    },
+    {
+      "id": "7b73",
+      "word": "ENVIRONMENT",
+      "hint": "use npm to update",
+      "difficulty": "hard"
+    },
+    {
+      "id": "852b",
+      "word": "REPOSITORY",
+      "hint": "github....",
+      "difficulty": "hard"
+    },
+    {
+      "id": "7b3e",
+      "word": "GIT",
+      "hint": "push, pull, checkout...",
+      "difficulty": "easy"
+    },
+    {
+      "id": "3c1e",
+      "word": "CONSOLE",
+      "hint": "log",
+      "difficulty": "medium"
+    },
+    {
+      "id": "4966",
+      "word": "STRING",
+      "hint": "\"\"",
+      "difficulty": "medium"
     }
   ]
 }
