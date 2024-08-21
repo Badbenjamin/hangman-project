@@ -18,7 +18,6 @@ function LetterGuessForm({ handleGuess, handleClick }) {
             handleGuess(guessChar)
             setGuessChar('')
         } 
-        
     }
 
     function onClick(){

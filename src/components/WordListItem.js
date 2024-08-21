@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 
 function WordListItem({word, removeWord}){
-    // console.log(word)
 
     function onDelete(){
         removeWord(word.id)

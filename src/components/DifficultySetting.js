@@ -2,8 +2,6 @@
 
 function DifficultySetting({onDifficultyChange}){
 
-    // console.log(onDifficultyChange)
-
     function onChange(event){
         console.log(event.target.value)
         onDifficultyChange(event.target.value)
