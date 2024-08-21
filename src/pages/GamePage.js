@@ -65,7 +65,7 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange })
 
 
     const guessBlankElement = characters.map((char, i) => {
-        return <LetterGuessBlank className="guess" winOrLoss={winOrLoss.length -2} reveal={reveal[i]} key={char + i} char={char} index={i} />
+        return <LetterGuessBlank className="guess" winOrLoss={winOrLoss[winOrLoss.length -1]} reveal={reveal[i]} key={char + i} char={char} index={i} />
     })
 
     return (
