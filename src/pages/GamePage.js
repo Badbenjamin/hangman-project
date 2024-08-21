@@ -29,14 +29,12 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
     } else {
         winOrLossMessage = ""
     }
-    console.log(winOrLoss)
 
     useEffect(() => {
         setReveal(matchingCharacters)
     }, [guesses])
 
     useEffect(() => {
-    
         if ((reveal.length !== 0) && reveal.length === reveal.filter(bool => bool === true).length) {
             setWinOrLoss([...winOrLoss, true]);
         } else if (wrongGuesses.length === 6) {
@@ -59,7 +57,6 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
         }
 
         if (winOrLoss.length - 1 === true || winOrLoss.length -1 === false) {
-
             return;
         }
 

@@ -17,10 +17,6 @@ function App() {
   const [difficulty, setDifficultly] = useState("mix")
   const [gameOver, setGameOver] = useState(false)
   const [currentHint, setCurrentHint] = useState('')
-  
-
-  console.log("cw", currentWord)
-  console.log("h", currentHint)
 
   useEffect(() => {
     fetch("http://localhost:4000/words")
@@ -39,8 +35,7 @@ function App() {
     }
     return array
   }
-  
-  // let wordDifficulty = [...words]
+
   useEffect(() => {
     if ((words[0] !== undefined && words[wordIndex] !== undefined)) {
       let wordsByDifficulty = [...words]
@@ -51,20 +46,15 @@ function App() {
         wordsByDifficulty = wordsByDifficulty.filter((word) => word.difficulty === "medium")
       } else if (difficulty === "hard") {
         wordsByDifficulty = wordsByDifficulty.filter((word) => word.difficulty === "hard")
-      } else {
-        wordsByDifficulty = wordsByDifficulty
-      }  
+      } 
 
       if (wordsByDifficulty[wordIndex] !== undefined) {
         setCurrentWord(wordsByDifficulty[wordIndex].word)
         setCurrentHint(wordsByDifficulty[wordIndex].hint)
       } else if (wordsByDifficulty[wordIndex] === undefined) {
-        // handleNextWord()
         setGameOver(true)
       } 
-      console.log(wordsByDifficulty)
     } 
-    
   }, [words, wordIndex, difficulty])
 
   function handleNextWord() {
@@ -103,13 +93,10 @@ function App() {
   }
 
   function handleDifficultyChange(currentDifficulty){
-    console.log(currentDifficulty)
     setDifficultly(currentDifficulty)
   } 
 
   function editWord(updatedWord, id) {
-    // console.log(updatedWord)
-    // console.log(id)
     fetch(`http://localhost:4000/words/${id}`, {
       method: "PATCH",
       headers: {

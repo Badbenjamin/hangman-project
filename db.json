@@ -143,6 +143,12 @@
       "word": "POST",
       "hint": "fetch method",
       "difficulty": "easy"
+    },
+    {
+      "id": "fe4c",
+      "word": "GPU",
+      "hint": "graphics",
+      "difficulty": "medium"
     }
   ]
 }

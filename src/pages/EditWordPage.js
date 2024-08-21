@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar"
 
 function EditWordPage({editWord}){
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const {id} = useParams()
 
     const [word, setWord] =useState({
@@ -26,11 +26,7 @@ function EditWordPage({editWord}){
 
     useEffect(()=>{
         setFormData(word)
-        
     }, [word])
-
-    console.log(formData)
-    // console.log(word.word)
 
     function handleChange(e){
         setFormData({...formData, [e.target.name]: e.target.value})
@@ -43,16 +39,12 @@ function EditWordPage({editWord}){
             word: formData.word.toUpperCase()
         }
         editWord(editedWordForm, word.id)
-
-
     }
-
 
     return(
     <div>
         <Navbar/>
         <h1>{formData.word}</h1>
-       
         <form onSubmit={onSubmit}>
             <div>
                 <label>EDIT WORD</label>

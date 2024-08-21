@@ -12,7 +12,6 @@ function AddWordPage({ words, addNewWord, removeWord }) {
         setSearchtext(e.target.value)
     }
 
-    console.log(searchText)
     const filteredWords = words.filter(word => {
         return word.word.includes(searchText.toUpperCase())
     })
@@ -30,7 +29,7 @@ function AddWordPage({ words, addNewWord, removeWord }) {
                     id="search"
                     placeholder="SEARCH WORDS"
                     onChange={onChange}
-                     value={searchText}
+                    value={searchText.toUpperCase()}
                 />
             </div>
              <WordList words={filteredWords} removeWord={removeWord} />
