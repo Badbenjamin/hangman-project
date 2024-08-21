@@ -91,7 +91,7 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
             <h1>DANG, MAN! <span className={spanClass}>{winOrLossMessage}</span></h1>
             {(winOrLoss.length === 1 && guesses.length === 0) ? <DifficultySetting guesses={guesses} onDifficultyChange={handleDifficultyChange}/> : <div>DIFFICULTY: {difficulty.toUpperCase()}</div>}
             {(wrongGuesses.length >= 5) ? (<h1>{`HINT: ${hint}`}</h1>) : (<></>)}
-            {guessBlankElement}
+            {(gameOver) ? <></> : guessBlankElement}
             {(gameOver) ? <></> : <TurnsLeft className="turns-left"  winOrLoss={winOrLoss.length -1} wrongGuesses={wrongGuesses} />}
             {(gameOver) ? <></> : ((winOrLoss[winOrLoss.length-1] === null) ? (<LetterGuessForm handleClick={handleClick} handleGuess={handleGuess} />) : <button onClick={handleClick}>Next Word</button>)}
             {(winOrLoss.length > 1 ) ? <ScoreCard gameOver={gameOver} winOrLoss={winOrLoss}/> : <></> }

@@ -17,6 +17,7 @@ function App() {
   const [difficulty, setDifficultly] = useState("mix")
   const [gameOver, setGameOver] = useState(false)
   const [currentHint, setCurrentHint] = useState('')
+  
 
   console.log("cw", currentWord)
   console.log("h", currentHint)
@@ -130,7 +131,7 @@ function App() {
   const routes = [
     {
       path: "/",
-      element: ((words[0] === undefined) ? null : <GamePage gameOver={gameOver} hint={currentHint} currentWord={currentWord} difficulty={words[wordIndex].difficulty} handleDifficultyChange={handleDifficultyChange} handleNextWord={handleNextWord} />),
+      element: ((words[0] === undefined) ? null : <GamePage gameOver={gameOver} hint={currentHint} currentWord={currentWord} difficulty={difficulty} handleDifficultyChange={handleDifficultyChange} handleNextWord={handleNextWord} />),
       errorElement: <ErrorPage />
     },
     {
