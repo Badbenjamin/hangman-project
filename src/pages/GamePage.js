@@ -7,7 +7,7 @@ import DifficultySetting from "../components/DifficultySetting"
 import ScoreCard from "../components/ScoreCard"
 
 
-function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, difficulty }) {
+function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, difficulty, gameOver }) {
    
     const characters = [...currentWord]
   
@@ -15,10 +15,10 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
     const [reveal, setReveal] = useState(Array(characters.length).fill(false));
     const [wrongGuesses, setWrongGuesses] = useState([])
     const [winOrLoss, setWinOrLoss] = useState([null])
-    const [gameOver, setGameOver] = useState(false)
-
-    console.log(currentWord)
-    console.log(difficulty)
+    
+    // console.log(winOrLoss)
+    // console.log(currentWord)
+    // console.log(difficulty)
 
     useEffect(() => {
         setReveal(matchingCharacters)
@@ -42,6 +42,10 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
     }
 
     function handleGuess(newGuess) {
+
+        if (gameOver === true){
+            return;
+        }
 
         if (winOrLoss.length - 1 === true || winOrLoss.length -1 === false) {
 
@@ -77,9 +81,9 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
             {(winOrLoss.length === 1 && guesses.length === 0) ? <DifficultySetting guesses={guesses} onDifficultyChange={handleDifficultyChange}/> : <div>DIFFICULTY: {difficulty.toUpperCase()}</div>}
             {(wrongGuesses.length >= 5) ? (<h1>{`HINT: ${hint}`}</h1>) : (<></>)}
             {guessBlankElement}
-            <TurnsLeft className="turns-left"  winOrLoss={winOrLoss.length -1} wrongGuesses={wrongGuesses} />
-            {(winOrLoss[winOrLoss.length-1] === null) ? (<LetterGuessForm handleClick={handleClick} handleGuess={handleGuess} />) : <button onClick={handleClick}>Next Word</button>}
-            <ScoreCard winOrLoss={winOrLoss}/>
+            {(gameOver) ? <></> : <TurnsLeft className="turns-left"  winOrLoss={winOrLoss.length -1} wrongGuesses={wrongGuesses} />}
+            {(gameOver) ? <></> : ((winOrLoss[winOrLoss.length-1] === null) ? (<LetterGuessForm handleClick={handleClick} handleGuess={handleGuess} />) : <button onClick={handleClick}>Next Word</button>)}
+            {(winOrLoss.length > 1 ) ? <ScoreCard gameOver={gameOver} winOrLoss={winOrLoss}/> : <></> }
         </div>
     )
 }
