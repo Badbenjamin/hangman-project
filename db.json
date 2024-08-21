@@ -47,6 +47,12 @@
       "word": "EVENT",
       "hint": "onClick",
       "difficulty": "medium"
+    },
+    {
+      "id": "7e5a",
+      "word": "BINARY",
+      "hint": "Ones and zeroes",
+      "difficulty": "easy"
     }
   ]
 }
