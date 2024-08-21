@@ -16,9 +16,10 @@ function App() {
   const [wordIndex, setWordIndex] = useState(0)
   const [difficulty, setDifficultly] = useState("mix")
   const [gameOver, setGameOver] = useState(false)
+  const [currentHint, setCurrentHint] = useState('')
 
-  // console.log("cw", currentWord)
-  // console.log("d", words[wordIndex].difficulty)
+  console.log("cw", currentWord)
+  console.log("h", currentHint)
 
   useEffect(() => {
     fetch("http://localhost:4000/words")
@@ -38,27 +39,31 @@ function App() {
     return array
   }
   
+  // let wordDifficulty = [...words]
   useEffect(() => {
     if ((words[0] !== undefined && words[wordIndex] !== undefined)) {
-      let wordDifficulty = [...words]
+      let wordsByDifficulty = [...words]
       
       if (difficulty === "easy") {
-        wordDifficulty = wordDifficulty.filter((word) => word.difficulty === "easy")
+        wordsByDifficulty = wordsByDifficulty.filter((word) => word.difficulty === "easy")
       } else if (difficulty === "medium") {
-        wordDifficulty = wordDifficulty.filter((word) => word.difficulty === "medium")
+        wordsByDifficulty = wordsByDifficulty.filter((word) => word.difficulty === "medium")
       } else if (difficulty === "hard") {
-        wordDifficulty = wordDifficulty.filter((word) => word.difficulty === "hard")
+        wordsByDifficulty = wordsByDifficulty.filter((word) => word.difficulty === "hard")
       } else {
-        wordDifficulty = wordDifficulty
+        wordsByDifficulty = wordsByDifficulty
       }  
 
-      if (wordDifficulty[wordIndex] !== undefined) {
-        setCurrentWord(wordDifficulty[wordIndex].word)
-      } else if (wordDifficulty[wordIndex] === undefined) {
+      if (wordsByDifficulty[wordIndex] !== undefined) {
+        setCurrentWord(wordsByDifficulty[wordIndex].word)
+        setCurrentHint(wordsByDifficulty[wordIndex].hint)
+      } else if (wordsByDifficulty[wordIndex] === undefined) {
         // handleNextWord()
         setGameOver(true)
       } 
+      console.log(wordsByDifficulty)
     } 
+    
   }, [words, wordIndex, difficulty])
 
   function handleNextWord() {
@@ -125,7 +130,7 @@ function App() {
   const routes = [
     {
       path: "/",
-      element: ((words[0] === undefined) ? null : <GamePage gameOver={gameOver} hint={words[wordIndex].hint} currentWord={currentWord} difficulty={words[wordIndex].difficulty} handleDifficultyChange={handleDifficultyChange} handleNextWord={handleNextWord} />),
+      element: ((words[0] === undefined) ? null : <GamePage gameOver={gameOver} hint={currentHint} currentWord={currentWord} difficulty={words[wordIndex].difficulty} handleDifficultyChange={handleDifficultyChange} handleNextWord={handleNextWord} />),
       errorElement: <ErrorPage />
     },
     {
