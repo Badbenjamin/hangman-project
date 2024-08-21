@@ -14,7 +14,7 @@ function TurnsLeft({ wrongGuesses, winOrLoss}) {
 
     return (
         <div className="turns_left">
-            <div>GUESSES LEFT: <span className={guessColor}>{6 - wrongGuesses.length}</span></div>
+            <div>$<span className={guessColor}>{6 - wrongGuesses.length}</span></div>
             <div id="wrong">{wrongGuesses}</div>
         </div>
     )

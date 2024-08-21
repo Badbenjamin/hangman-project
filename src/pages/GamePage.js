@@ -6,6 +6,8 @@ import TurnsLeft from "../components/TurnsLeft"
 import DifficultySetting from "../components/DifficultySetting"
 import ScoreCard from "../components/ScoreCard"
 
+import './PageStyles.css'
+
 
 function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, difficulty, gameOver }) {
    
@@ -15,6 +17,19 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
     const [reveal, setReveal] = useState(Array(characters.length).fill(false));
     const [wrongGuesses, setWrongGuesses] = useState([])
     const [winOrLoss, setWinOrLoss] = useState([null])
+
+    let winOrLossMessage = ""
+    let spanClass = ""
+    if (winOrLoss[winOrLoss.length - 1] === false) {
+        winOrLossMessage = "YOU'RE BROKE!"
+        spanClass = "red"
+    } else if (winOrLoss[winOrLoss.length - 1] === true) {
+        winOrLossMessage = "YOU'RE RICH!"
+        spanClass = "green"
+    } else {
+        winOrLossMessage = ""
+    }
+    console.log(winOrLoss)
 
     useEffect(() => {
         setReveal(matchingCharacters)
@@ -73,7 +88,7 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
     return (
         <div>
             <Navbar />
-            <h1>GUESS THE WORD!</h1>
+            <h1>DANG, MAN! <span className={spanClass}>{winOrLossMessage}</span></h1>
             {(winOrLoss.length === 1 && guesses.length === 0) ? <DifficultySetting guesses={guesses} onDifficultyChange={handleDifficultyChange}/> : <div>DIFFICULTY: {difficulty.toUpperCase()}</div>}
             {(wrongGuesses.length >= 5) ? (<h1>{`HINT: ${hint}`}</h1>) : (<></>)}
             {guessBlankElement}
