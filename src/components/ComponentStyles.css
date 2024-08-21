@@ -30,3 +30,15 @@
     font-size: 30px;
     color: red;
 }
+
+.win_score{
+    color: green;
+}
+
+.loss_score{
+    color: red;
+}
+
+*{
+    text-align: center;
+}

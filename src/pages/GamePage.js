@@ -15,10 +15,6 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
     const [reveal, setReveal] = useState(Array(characters.length).fill(false));
     const [wrongGuesses, setWrongGuesses] = useState([])
     const [winOrLoss, setWinOrLoss] = useState([null])
-    
-    // console.log(winOrLoss)
-    // console.log(currentWord)
-    // console.log(difficulty)
 
     useEffect(() => {
         setReveal(matchingCharacters)
