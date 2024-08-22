@@ -91,7 +91,7 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
             {(gameOver) ? <></> : guessBlankElement}
             {(gameOver) ? <></> : <TurnsLeft className="turns-left" winOrLoss={winOrLoss.length - 1} wrongGuesses={wrongGuesses} />}
             {(gameOver) ? <></> : ((winOrLoss[winOrLoss.length - 1] === null) ? (<LetterGuessForm handleClick={handleClick} handleGuess={handleGuess} />) : <button onClick={handleClick}>Next Word</button>)}
-            {(winOrLoss.length > 1) ? <ScoreCard gameOver={gameOver} winOrLoss={winOrLoss} /> : <></>}
+            {(winOrLoss.length > 1) ? <ScoreCard className="score_card" gameOver={gameOver} winOrLoss={winOrLoss} /> : <></>}
         </div>
     )
 }

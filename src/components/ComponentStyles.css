@@ -2,12 +2,12 @@
     font-size: 100px;
 }
 
-.letter_green{
+.letter_green {
     font-size: 100px;
     color: green;
 }
 
-.letter_red{
+.letter_red {
     font-size: 100px;
     color: red;
 }
@@ -16,33 +16,41 @@
     font-size: 30px;
 }
 
-#wrong{
+#wrong {
     font-size: 45px;
     color: red;
 }
 
-.guess_green{
+.guess_green {
     font-size: 30px;
     color: green;
 }
 
-.guess_red{
+.guess_red {
     font-size: 30px;
     color: red;
 }
 
-.win_score{
+.win_score {
     color: green;
 }
 
-.loss_score{
+.loss_score {
     color: red;
 }
 
-/* .nav_bar{
-   color: blue;
-} */
+.nav_bar {
+    font-size: 30px;
+}
 
-*{
+.selected {
+    color: green;
+}
+
+.unselected {
+    color: blue;
+}
+
+* {
     text-align: center;
 }
