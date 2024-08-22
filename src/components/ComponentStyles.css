@@ -13,7 +13,8 @@
 }
 
 .turns_left {
-    font-size: 30px;
+    font-size: 45px;
+    font-weight: bold;
 }
 
 #wrong {
