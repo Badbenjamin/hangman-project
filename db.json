@@ -149,6 +149,18 @@
       "word": "GPU",
       "hint": "graphics",
       "difficulty": "medium"
+    },
+    {
+      "id": "b152",
+      "word": "COMPILE",
+      "hint": "build",
+      "difficulty": "medium"
+    },
+    {
+      "id": "46bc",
+      "word": "HACK",
+      "hint": "digital crime",
+      "difficulty": "easy"
     }
   ]
 }

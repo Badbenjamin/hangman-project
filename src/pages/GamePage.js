@@ -10,9 +10,9 @@ import './PageStyles.css'
 
 
 function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, difficulty, gameOver }) {
-   
+
     const characters = [...currentWord]
-  
+
     const [guesses, setGuesses] = useState([])
     const [reveal, setReveal] = useState(Array(characters.length).fill(false));
     const [wrongGuesses, setWrongGuesses] = useState([])
@@ -24,7 +24,7 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
         winOrLossMessage = "YOU'RE BROKE!"
         spanClass = "red"
     } else if (winOrLoss[winOrLoss.length - 1] === true) {
-        winOrLossMessage = "YOU'RE RICH!"
+        winOrLossMessage = `YOU'VE GOT ${6 - wrongGuesses.length} DOLLARS!`
         spanClass = "green"
     } else {
         winOrLossMessage = ""
@@ -42,7 +42,7 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
         }
     }, [reveal])
 
-    function handleClick(){
+    function handleClick() {
         handleNextWord()
         setReveal(Array(characters.length).fill(false))
         setWinOrLoss([...winOrLoss, null])
@@ -52,11 +52,11 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
 
     function handleGuess(newGuess) {
 
-        if (gameOver === true){
+        if (gameOver === true) {
             return;
         }
 
-        if (winOrLoss.length - 1 === true || winOrLoss.length -1 === false) {
+        if (winOrLoss.length - 1 === true || winOrLoss.length - 1 === false) {
             return;
         }
 
@@ -79,19 +79,19 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
 
 
     const guessBlankElement = characters.map((char, i) => {
-        return <LetterGuessBlank className="guess" winOrLoss={winOrLoss[winOrLoss.length -1]} reveal={reveal[i]} key={char + i} char={char} index={i} />
+        return <LetterGuessBlank className="guess" winOrLoss={winOrLoss[winOrLoss.length - 1]} reveal={reveal[i]} key={char + i} char={char} index={i} />
     })
 
     return (
         <div>
             <Navbar />
             <h1>DANG, MAN! <span className={spanClass}>{winOrLossMessage}</span></h1>
-            {(winOrLoss.length === 1 && guesses.length === 0) ? <DifficultySetting guesses={guesses} onDifficultyChange={handleDifficultyChange}/> : <div>DIFFICULTY: {difficulty.toUpperCase()}</div>}
+            {(winOrLoss.length === 1 && guesses.length === 0) ? <DifficultySetting guesses={guesses} onDifficultyChange={handleDifficultyChange} /> : <div>DIFFICULTY: {difficulty.toUpperCase()}</div>}
             {(wrongGuesses.length >= 5) ? (<h1>{`HINT: ${hint}`}</h1>) : (<></>)}
             {(gameOver) ? <></> : guessBlankElement}
-            {(gameOver) ? <></> : <TurnsLeft className="turns-left"  winOrLoss={winOrLoss.length -1} wrongGuesses={wrongGuesses} />}
-            {(gameOver) ? <></> : ((winOrLoss[winOrLoss.length-1] === null) ? (<LetterGuessForm handleClick={handleClick} handleGuess={handleGuess} />) : <button onClick={handleClick}>Next Word</button>)}
-            {(winOrLoss.length > 1 ) ? <ScoreCard gameOver={gameOver} winOrLoss={winOrLoss}/> : <></> }
+            {(gameOver) ? <></> : <TurnsLeft className="turns-left" winOrLoss={winOrLoss.length - 1} wrongGuesses={wrongGuesses} />}
+            {(gameOver) ? <></> : ((winOrLoss[winOrLoss.length - 1] === null) ? (<LetterGuessForm handleClick={handleClick} handleGuess={handleGuess} />) : <button onClick={handleClick}>Next Word</button>)}
+            {(winOrLoss.length > 1) ? <ScoreCard gameOver={gameOver} winOrLoss={winOrLoss} /> : <></>}
         </div>
     )
 }
