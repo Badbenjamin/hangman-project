@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar"
 
 function EditWordPage({editWord}){
 
-    // const navigate = useNavigate()
     const {id} = useParams()
 
     const [word, setWord] =useState({

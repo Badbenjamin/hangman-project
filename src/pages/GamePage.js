@@ -30,6 +30,7 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
         winOrLossMessage = ""
     }
 
+    // matchingCharacters array is used to set individual blanks to T or F to reveal characters.
     useEffect(() => {
         setReveal(matchingCharacters)
     }, [guesses])
@@ -69,6 +70,7 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
         }
     }
 
+    // Guesses are compared with word characters, returing true for each index where there is a match
     let matchingCharacters = characters.map((wordChar) => {
         if (wordChar === guesses.find(guessChar => guessChar === wordChar)) {
             return true
@@ -76,10 +78,13 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
             return false
         }
     })
+    console.log(reveal)
 
-
+    // For each character of the current word, a blank element is created
+    // the index of each blank is assigned to the reveal prop, 
+    // so that when a false index is flipped to true in the array, a letter is revealed.
     const guessBlankElement = characters.map((char, i) => {
-        return <LetterGuessBlank className="guess" winOrLoss={winOrLoss[winOrLoss.length - 1]} reveal={reveal[i]} key={char + i} char={char} index={i} />
+        return <LetterGuessBlank className="guess" winOrLoss={winOrLoss[winOrLoss.length - 1]} reveal={reveal[i]} key={char + i} char={char}  />
     })
 
     return (
