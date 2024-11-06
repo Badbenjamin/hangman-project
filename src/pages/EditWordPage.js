@@ -2,9 +2,11 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import Navbar from "../components/Navbar"
 
-function EditWordPage({editWord}){
 
+function EditWordPage({editWord, words}){
+    console.log(words)
     const {id} = useParams()
+    console.log(id)
 
     const [word, setWord] =useState({
         word: "",
@@ -18,10 +20,15 @@ function EditWordPage({editWord}){
     }) 
 
     useEffect(()=>{
-        fetch(`http://localhost:4000/words/${id}`)
-        .then(r=>r.json())
-        .then(wordData => setWord(wordData));
+        for (const selectedWord of words){
+            console.log(selectedWord.id)
+            if (selectedWord.id === parseInt(id)){
+                setWord(selectedWord)
+            }
+        }
     }, [])
+
+    console.log(word)
 
     useEffect(()=>{
         setFormData(word)

@@ -86,23 +86,32 @@ function App() {
     setDifficultly(currentDifficulty)
   } 
 
-  function editWord(updatedWord, id) {
-    fetch(`http://localhost:4000/words/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(updatedWord)
-    })
-      .then(r => r.json())
-      .then(updatedWordData => setWords(words => words.map(word => {
-        if (updatedWordData.id === word.id) {
-          return updatedWordData
-        } else {
-          return word
-        }
-      })))
+  function editWord(updatedWord) {
+    console.log(updatedWord)
+    const newWords = [...words]
+    for (let wordToUpdate of newWords){
+      if (wordToUpdate.id === updatedWord.id){
+        wordToUpdate = updatedWord
+      }
+    }
+    setWords(newWords)
+    // console.log(newWords)
+    // fetch(`http://localhost:4000/words/${id}`, {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "Accept": "application/json"
+    //   },
+    //   body: JSON.stringify(updatedWord)
+    // })
+    //   .then(r => r.json())
+    //   .then(updatedWordData => setWords(words => words.map(word => {
+    //     if (updatedWordData.id === word.id) {
+    //       return updatedWordData
+    //     } else {
+    //       return word
+    //     }
+    //   })))
   }
 
   const routes = [
@@ -122,7 +131,7 @@ function App() {
     },
     {
       path: "/words/:id",
-      element: <EditWordPage editWord={editWord} />
+      element: <EditWordPage editWord={editWord} words={words} />
     }
   ]
 
