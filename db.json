@@ -161,6 +161,12 @@
       "word": "HACK",
       "hint": "digital crime",
       "difficulty": "easy"
+    },
+    {
+      "id": "d584",
+      "word": "DEBATABASE",
+      "hint": "database of debate topics",
+      "difficulty": "medium"
     }
   ]
 }

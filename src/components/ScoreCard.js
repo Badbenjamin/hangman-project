@@ -8,7 +8,6 @@ function ScoreCard({winOrLoss, gameOver}){
     let lossClass =""
 
     function onNewGame(){
-        // handleNewGame()
         window.location.reload()
     }
 

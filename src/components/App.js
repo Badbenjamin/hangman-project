@@ -8,8 +8,14 @@ import WordHistory from '../pages/WordHistory';
 import ErrorPage from '../pages/ErrorPage';
 import EditWordPage from '../pages/EditWordPage';
 
+import {wordList} from './WordListObject.js'
+// import words from '../db.json'
+
+
 
 function App() {
+
+  console.log(wordList)
 
   const [words, setWords] = useState([])
   const [currentWord, setCurrentWord] = useState("")

@@ -81,7 +81,7 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
     console.log(reveal)
 
     // For each character of the current word, a blank element is created
-    // the index of each blank is assigned to the reveal prop, 
+    // The index of each blank is assigned to the reveal prop, 
     // so that when a false index is flipped to true in the array, a letter is revealed.
     const guessBlankElement = characters.map((char, i) => {
         return <LetterGuessBlank className="guess" winOrLoss={winOrLoss[winOrLoss.length - 1]} reveal={reveal[i]} key={char + i} char={char}  />
