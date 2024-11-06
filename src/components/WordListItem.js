@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 function WordListItem({word, removeWord}){
 
     function onDelete(){
-        removeWord(word.id)
+        removeWord(word.word)
     }
 
     return(

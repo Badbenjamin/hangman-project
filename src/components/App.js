@@ -76,18 +76,10 @@ function App() {
   }
   console.log(words)
 
-  function removeWord(deletedWordId) {
-    fetch(`http://localhost:4000/words/${deletedWordId}`, {
-      method: "DELETE"
-    })
-      .then(response => {
-        if (response.ok) {
-          setWords((words) => words.filter(word => {
-            return word.id !== deletedWordId;
-          }))
-        }
-      })
-
+  function removeWord(deletedWord) {
+    setWords((words) => words.filter(word => {
+      return word.word !== deletedWord
+    }))
   }
 
   function handleDifficultyChange(currentDifficulty){
