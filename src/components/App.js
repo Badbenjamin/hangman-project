@@ -9,8 +9,6 @@ import ErrorPage from '../pages/ErrorPage';
 import EditWordPage from '../pages/EditWordPage';
 
 import {wordList} from './WordListObject.js'
-// import words from '../db.json'
-
 
 
 function App() {
@@ -25,9 +23,7 @@ function App() {
   const [currentHint, setCurrentHint] = useState('')
 
   useEffect(() => {
-    fetch("http://localhost:4000/words")
-      .then(response => response.json())
-      .then(newWords => setWords(shuffleArray(newWords)));
+    setWords(shuffleArray(wordList))
   }, [])
 
 
@@ -74,16 +70,11 @@ function App() {
   }
 
   function addNewWord(newWord) {
-    fetch("http://localhost:4000/words", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(newWord)
-    })
-      .then(response => response.json())
-      .then(newWordData => setWords([...words, newWordData]))
+    const newWords = [...words]
+    newWords.push(newWord)
+    setWords(shuffleArray(newWords))
   }
+  console.log(words)
 
   function removeWord(deletedWordId) {
     fetch(`http://localhost:4000/words/${deletedWordId}`, {
@@ -96,6 +87,7 @@ function App() {
           }))
         }
       })
+
   }
 
   function handleDifficultyChange(currentDifficulty){
@@ -124,7 +116,7 @@ function App() {
   const routes = [
     {
       path: "/",
-      element: ((words[0] === undefined) ? null : <GamePage gameOver={gameOver} hint={currentHint} currentWord={currentWord} difficulty={difficulty} handleDifficultyChange={handleDifficultyChange} handleNextWord={handleNextWord} />),
+      element: <GamePage gameOver={gameOver} hint={currentHint} currentWord={currentWord} difficulty={difficulty} handleDifficultyChange={handleDifficultyChange} handleNextWord={handleNextWord} />,
       errorElement: <ErrorPage />
     },
     {
@@ -138,7 +130,7 @@ function App() {
     },
     {
       path: "/words/:id",
-      element: ((words[0] === undefined) ? null : <EditWordPage editWord={editWord} />)
+      element: <EditWordPage editWord={editWord} />
     }
   ]
 
