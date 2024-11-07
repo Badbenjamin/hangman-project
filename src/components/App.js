@@ -13,7 +13,7 @@ import {wordList} from './WordListObject.js'
 
 function App() {
 
-  console.log(wordList)
+  // console.log(wordList)
 
   const [words, setWords] = useState([])
   const [currentWord, setCurrentWord] = useState("")
@@ -74,7 +74,7 @@ function App() {
     newWords.push(newWord)
     setWords(shuffleArray(newWords))
   }
-  console.log(words)
+
 
   function removeWord(deletedWord) {
     setWords((words) => words.filter(word => {
@@ -87,32 +87,16 @@ function App() {
   } 
 
   function editWord(updatedWord) {
-    console.log(updatedWord)
-    const newWords = [...words]
-    for (let wordToUpdate of newWords){
-      if (wordToUpdate.id === updatedWord.id){
-        wordToUpdate = updatedWord
+    const newWords = words.map((word) =>{
+      if (updatedWord.id === word.id) {
+        return updatedWord;
+      } else {
+        return word
       }
-    }
+    })
     setWords(newWords)
-    // console.log(newWords)
-    // fetch(`http://localhost:4000/words/${id}`, {
-    //   method: "PATCH",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Accept": "application/json"
-    //   },
-    //   body: JSON.stringify(updatedWord)
-    // })
-    //   .then(r => r.json())
-    //   .then(updatedWordData => setWords(words => words.map(word => {
-    //     if (updatedWordData.id === word.id) {
-    //       return updatedWordData
-    //     } else {
-    //       return word
-    //     }
-    //   })))
   }
+  console.log("app words", words)
 
   const routes = [
     {

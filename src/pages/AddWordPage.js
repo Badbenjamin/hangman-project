@@ -20,7 +20,7 @@ function AddWordPage({ words, addNewWord, removeWord }) {
         <div>
             <Navbar />
             <h1>ADD WORD</h1>
-            <AddWordForm addNewWord={addNewWord}/>
+            <AddWordForm addNewWord={addNewWord} words={words}/>
             <h2>WORDS</h2>
             <div className="searchbar">
                 <label htmlFor="search"></label>

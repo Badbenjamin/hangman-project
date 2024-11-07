@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar"
 function EditWordPage({editWord, words}){
     console.log(words)
     const {id} = useParams()
-    console.log(id)
+    // console.log(id)
 
     const [word, setWord] =useState({
         word: "",
@@ -21,14 +21,12 @@ function EditWordPage({editWord, words}){
 
     useEffect(()=>{
         for (const selectedWord of words){
-            console.log(selectedWord.id)
+            // console.log(selectedWord.id)
             if (selectedWord.id === parseInt(id)){
                 setWord(selectedWord)
             }
         }
     }, [])
-
-    console.log(word)
 
     useEffect(()=>{
         setFormData(word)

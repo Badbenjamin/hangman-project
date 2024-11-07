@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-function AddWordForm({addNewWord}){
-
+function AddWordForm({addNewWord, words}){
+    
     const [formData, setFormData] = useState({
         word: "",
         hint: "",
@@ -16,7 +16,8 @@ function AddWordForm({addNewWord}){
         e.preventDefault()
         const newWordForm = {
             ...formData,
-            word: formData.word.toUpperCase()
+            word: formData.word.toUpperCase(),
+            id : words.length + 1,
         }
         addNewWord(newWordForm)
         setFormData({

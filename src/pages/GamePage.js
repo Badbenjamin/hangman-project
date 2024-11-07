@@ -78,7 +78,7 @@ function GamePage({ currentWord, handleNextWord, hint, handleDifficultyChange, d
             return false
         }
     })
-    console.log(reveal)
+    // console.log(reveal)
 
     // For each character of the current word, a blank element is created
     // The index of each blank is assigned to the reveal prop, 
