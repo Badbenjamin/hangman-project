@@ -27,7 +27,7 @@ function WordHistory({ word }) {
             <p>
                 Why should this children's game, which began without any references to lynching, include a completely unnecessary hanging-man scorekeeping element? 
                 This is the problem I have solved by re-naming the game, "Dang, Man!" 
-                With this new game, which is the exact same as the original aside from the name and score card, we can free ourselves from the vestiges of our violent past and stride proudly into the 21st century.
+                With this new game, which is the exact same as the original, aside from the name and score card, we can free ourselves from the vestiges of our violent past and stride proudly into the 21st century.
             </p>
             <p>
                 However, our world today is not without problems... Though less racist than at the turn of the century, we now exisit within a hyper-capitalist world, 

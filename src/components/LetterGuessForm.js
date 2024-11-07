@@ -26,7 +26,7 @@ function LetterGuessForm({ handleGuess, handleClick }) {
 
     return (
         <div>
-          <form onSubmit={onGuessSubmit} >
+          <form onSubmit={onGuessSubmit} autoComplete="off" >
                 <label>guess letter</label>
                 <input onChange={handleChange} id="letterInput" name="letter" value={guessChar} />
                 <button type="sumbit">Submit</button>

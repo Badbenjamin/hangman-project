@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import GamePage from '../pages/GamePage';
@@ -13,8 +13,6 @@ import {wordList} from './WordListObject.js'
 
 function App() {
 
-  // console.log(wordList)
-
   const [words, setWords] = useState([])
   const [currentWord, setCurrentWord] = useState("")
   const [wordIndex, setWordIndex] = useState(0)
@@ -25,7 +23,6 @@ function App() {
   useEffect(() => {
     setWords(shuffleArray(wordList))
   }, [])
-
 
   function shuffleArray(array) {
     let i = array.length, j, temp;
@@ -96,7 +93,6 @@ function App() {
     })
     setWords(newWords)
   }
-  console.log("app words", words)
 
   const routes = [
     {

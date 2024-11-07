@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar"
 function EditWordPage({editWord, words}){
     console.log(words)
     const {id} = useParams()
-    // console.log(id)
+    const navigate = useNavigate()
 
     const [word, setWord] =useState({
         word: "",
@@ -45,6 +45,10 @@ function EditWordPage({editWord, words}){
         editWord(editedWordForm, word.id)
     }
 
+    function handleBackClick(){
+        navigate("/add_word")
+    }
+
     return(
     <div>
         <Navbar/>
@@ -68,6 +72,7 @@ function EditWordPage({editWord, words}){
             </div>
             <button type="sumbit">SUMBIT</button>
         </form>
+        <button onClick={handleBackClick} type="back">BACK</button>
     </div>
     )
 }
