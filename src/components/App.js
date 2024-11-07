@@ -96,7 +96,7 @@ function App() {
 
   const routes = [
     {
-      path: "/hangman_project",
+      path: "/hangman-project",
       element: <GamePage gameOver={gameOver} hint={currentHint} currentWord={currentWord} difficulty={difficulty} handleDifficultyChange={handleDifficultyChange} handleNextWord={handleNextWord} />,
       errorElement: <ErrorPage />
     },
