@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 import GamePage from '../pages/GamePage';
 import AddWordPage from '../pages/AddWordPage';
-import WordHistory from '../pages/WordHistory';
+import History from '../pages/History.js';
 import ErrorPage from '../pages/ErrorPage';
 import EditWordPage from '../pages/EditWordPage';
 
@@ -107,7 +107,7 @@ function App() {
     },
     {
       path: "/history",
-      element: <WordHistory />
+      element: <History />
     },
     {
       path: "/words/:id",
